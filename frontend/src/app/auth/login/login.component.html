@@ -1,0 +1,40 @@
+<div class="bg">
+    <div class="wrapper">
+        <div class="container animated slideInUp">
+            <div style="text-align: center;"><img src="assets/img/LogoBlanco.png"></div>
+            <form class="shadow" [formGroup]="formGroup" (submit)="formGroup.status != 'INVALID' && submitForm()"
+                  style="background-color: #fff; padding: 20px; border-radius: 5px;">
+                <div class="input-inform" style="text-align: center !important;">
+                    <mat-form-field color="primary" style="width:300px;">
+                        <input matInput placeholder="Usuario" type="email" formControlName="email" value="admin@admin.com"/>
+                        <mat-error *ngIf="formGroup.get('email').hasError('email') && !formIsSending">
+                            Por favor, ingresa
+                            <strong>un correo electr&oacute;nico v&aacute;lido.</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field color="primary" style="width:300px;">
+                        <input matInput placeholder="Contraseña" type="password" formControlName="password" value="123456"/>
+                        <mat-error *ngIf="formGroup.get('password').hasError('required') && !formIsSending">
+                            Ingresa tu contrase&ntilde;a
+                        </mat-error>
+
+                        <mat-error *ngIf="passwordInvalid && !formIsSending">
+                            La contrase&ntilde;a es incorrecta
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="enter">
+                        <mat-progress-bar mode="indeterminate" *ngIf="formIsSending"
+                                          style="max-width: 105px"></mat-progress-bar>
+                        <label for="enter"></label>
+                        <button mat-raised-button id="enter" type="submit" *ngIf="!formIsSending" [disabled]="!formGroup.valid" color="accent">Entrar</button>
+
+                        <!--<button mat-button type="submit" id="enter" *ngIf="!formIsSending"><button/>-->
+                    </div>
+                    <div>
+                        <button mat-button *ngIf="!formIsSending" id="forgot-pas" [disabled]="formIsSending" (click)="gotoPasswordRecovery()">OLVIDÉ MI CONTRASEÑA</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
