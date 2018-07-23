@@ -15,7 +15,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(20);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $users = User::where(function($users) use ($search)
+        {
+            if (!empty($search)) {
+                    $users->Where('email', 'like', '%' . $search . '%');
+            }
+        })
+        ->paginate(20);
         return response()->json($users);
     }
 
@@ -40,7 +51,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'required|unique:users,email|email|min:3|',
-            'password' => 'required|min:3',
+            //'password' => 'required|min:3',
         ]);
 
         $user = new User();
@@ -60,9 +71,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return response()->json($user);
     }
 
     /**
@@ -88,12 +100,15 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|min:3|',
-            'password' => 'required|min:3',
+            //'password' => 'required|min:3',
         ]);
 
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = Hash::make($request->get('password'));
+        $user->lastname = $request->get('lastname');
+        $user->lastsurname = $request->get('lastsurname');
+        $user->estatus = $request->get('estatus');
+        //$user->password = Hash::make($request->get('password'));
         $user->save();
         return response()->json($user);
     }

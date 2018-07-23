@@ -70,7 +70,11 @@ export class LoginComponent implements OnInit {
             data => {
                 this.formUnlock();
                 this.formIsSending = false;
-                console.log(data);
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user_id', data.data.id);
+                localStorage.setItem('username', data.data.username);
+                localStorage.setItem('user_role', data.data.role);
+                this.router.navigate(['/administrator']);
             },
             (error) => {
                 this.formUnlock();

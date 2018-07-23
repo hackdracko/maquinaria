@@ -1,0 +1,11 @@
+<mat-dialog-content>
+  {{data.title}}
+  <p>
+    {{data.description}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</mat-dialog-actions>

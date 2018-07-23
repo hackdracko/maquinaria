@@ -19,6 +19,12 @@ export const ROUTES: Routes = [
         loadChildren: '../auth/auth.module#AuthModule'
     },
 
+    {
+        path: 'administrator',
+        //canActivate: [CanActivateAuthGuard],
+        loadChildren: '../administrator/administrator.module#AdministratorModule'
+    },
+
     /*{
         path: 'administrador',
         canActivate: [CanActivateAccessGuard, CanActivateRoleGuard],

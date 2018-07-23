@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ROUTES } from './routes';
+import {ROUTES} from "./routes";
 
 @NgModule({
     imports: [
@@ -10,4 +10,4 @@ import { ROUTES } from './routes';
         RouterModule
     ]
 })
-export class AuthRoutingModule { }
+export class AdministratorRoutingModule { }

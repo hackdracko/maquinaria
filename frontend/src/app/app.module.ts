@@ -7,6 +7,7 @@ import {AppConfigModule} from "./app-config.module";
 import {AppRoutingModule} from "./@routing/app-routing.module";
 import {NoContentComponent} from "./no-content";
 import {MatCardModule} from "@angular/material";
+import {AdministratorModule} from "./administrator/administrator.module";
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import {MatCardModule} from "@angular/material";
         AppRoutingModule,
         //RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
         MatCardModule,
+        AdministratorModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

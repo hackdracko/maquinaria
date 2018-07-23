@@ -11,22 +11,43 @@ import {Observable} from "rxjs/internal/Observable";
 export class AuthService {
     public token: string;
     public url: string;
-    private headers: HttpHeaders;
+    private httpOptionsAuth: {};
+    private httpOptions: {};
 
     constructor(private http: HttpClient,
                 private router: Router,
                 @Inject(APP_CONFIG) private config: AppConfig) {
         // set token if saved in local storage
+        this.token = localStorage.getItem('token');
         this.url = `${this.config.apiEndpoint}`;
-        this.headers = new HttpHeaders();
+        this.httpOptionsAuth = {
+            headers: new HttpHeaders({
+                'Accept': 'application/json',
+                'Content-Type':  'application/json',
+                'Cache-control': 'no-cache',
+            })
+        };
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Accept': 'application/json',
+                'Content-Type':  'application/json',
+                'Cache-control': 'no-cache',
+                'Authorization': 'Bearer ' + this.token,
+            })
+        };
+        /*this.headers = new HttpHeaders();
         this.headers.set('Accept', 'application/json');
         this.headers.set('Content-Type', 'application/json');
         this.headers.set('Cache-control', 'no-cache');
-
+        this.token = localStorage.getItem('token');
+        if(this.token != ''){
+            this.headers.set('Authorization', 'Bearer ' + this.token);
+            console.log("TOKEN " + this.token);
+        }*/
     }
 
     login(params: any): Observable<any> {
-        return this.http.post(this.url + 'authorize', params, {headers: this.headers});
+        return this.http.post(this.url + 'authorize', params, this.httpOptionsAuth);
 
         //return this.http.post(this.url + 'authorize', params, {headers: this.headers})
             /*.map(result => {
@@ -42,6 +63,23 @@ export class AuthService {
                     return false;
                 }
             });*/
+    }
+
+    logout(){
+        localStorage.clear();
+        this.router.navigate(['/']);
+    }
+
+    get(url: string, params: string): Observable<any> {
+        return this.http.get(this.url + url + params, this.httpOptions);
+    }
+
+    post(url: string, params?: {}): Observable<any> {
+        return this.http.post(this.url + url, params, this.httpOptions);
+    }
+
+    put(url: string, params?: {}): Observable<any> {
+        return this.http.put(this.url + url, params, this.httpOptions);
     }
 
     private handleError(error: HttpErrorResponse) {

@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <h2 class="page-title">
+                <mat-icon>event_note</mat-icon>
+                Editar Usuario
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <button mat-raised-button color="accent" (click)="back()">Regresar</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Nombre
+                    </mat-placeholder>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="formGroup.get('name').hasError('required')">
+                        El campo Nombre es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="name.errors?.minlength">
+                        El campo Password debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Apellido Paterno
+                    </mat-placeholder>
+                    <input matInput formControlName="lastname">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Apellido Materno
+                    </mat-placeholder>
+                    <input matInput formControlName="lastsurname">
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Email
+                    </mat-placeholder>
+                    <input matInput formControlName="email">
+                    <mat-error *ngIf="formGroup.get('email').hasError('required')">
+                        El campo Email es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="email.errors?.email">
+                        El formato del campo email no es correcto. Ejemplo: email@email.com
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Estatus
+                    </mat-placeholder>
+                    <mat-select formControlName="status">
+                        <mat-option *ngFor="let sts of status" [value]="sts.id">
+                            {{ sts.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" [disabled]="!this.formGroup.valid"
+                        (click)="dialogConfirm()">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
