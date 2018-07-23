@@ -49,9 +49,10 @@ class RolController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show($id)
     {
-        //
+        $role = Role::findById($id);
+        return response()->json($role);
     }
 
     /**

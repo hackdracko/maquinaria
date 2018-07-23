@@ -10,11 +10,12 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {IUser} from "../../@common/models";
 
 @Component({
-    selector: 'app-user-edit',
-    templateUrl: './user-edit.component.html',
-    styleUrls: ['./user-edit.component.css']
+    selector: 'app-rol-edit',
+    templateUrl: './rol-edit.component.html',
+    styleUrls: ['./rol-edit.component.css']
 })
-export class UserEditComponent implements OnInit {
+export class RolEditComponent implements OnInit {
+
     /**
      * Indicates FormGroup
      * @type {FormGroup}
@@ -65,33 +66,22 @@ export class UserEditComponent implements OnInit {
         this.getInfo();
     }
 
-    public form(){
+    public form() {
         this.formGroup = this._formBuilder.group({
             name: [this.result ? this.result.name : null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            lastname: [this.result ? this.result.lastname : null,
-            ],
-            lastsurname: [this.result ? this.result.lastsurname : null,
-            ],
-            email: [this.result ? this.result.email : null,
-                Validators.compose([
-                    Validators.required, Validators.email
-                ])
-            ],
-            status: [this.result ? this.result.estatus : null,
-            ],
         });
     }
 
-    get name() { return this.formGroup.get('name'); }
-    get email() { return this.formGroup.get('email'); }
-    get password() { return this.formGroup.get('password'); }
+    get name() {
+        return this.formGroup.get('name');
+    }
 
-    public back(){
-        this.router.navigate(['administrator/user']);
+    public back() {
+        this.router.navigate(['administrator/rol']);
     }
 
     public dialogInfo(tit, desc) {
@@ -106,7 +96,7 @@ export class UserEditComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de editar el Usuario'}
+            data: {title: 'Información', description: 'Estas seguro de editar el Rol'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -115,10 +105,10 @@ export class UserEditComponent implements OnInit {
         });
     }
 
-    public getInfo(){
+    public getInfo() {
         console.log("Info");
         this.loading = true;
-        this.authenticationService.get('user/' + this.id,'').subscribe(
+        this.authenticationService.get('rol/' + this.id, '').subscribe(
             payload => {
                 this.loading = false;
                 this.result = payload;
@@ -131,27 +121,23 @@ export class UserEditComponent implements OnInit {
         );
     }
 
-    public save(){
-        console.log("Save User");
+    public save() {
+        console.log("Save Rol");
         this.loading = true;
         this.formLock();
         let data = {
-            "name": this.formGroup.value.name,
-            "lastname": this.formGroup.value.lastname,
-            "lastsurname": this.formGroup.value.lastsurname,
-            "email": this.formGroup.value.email,
-            "estatus": this.formGroup.value.status,
+            "role": this.formGroup.value.name,
         };
-        this.authenticationService.put('user/' + this.id, data).subscribe(
+        this.authenticationService.put('rol/' + this.id, data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Usuario se edito correctamente");
-                this.router.navigate(['administrator/user']);
+                this.dialogInfo("Información", "El Rol se edito correctamente");
+                this.router.navigate(['administrator/rol']);
             },
             (error) => {
-                if(error.status == 422){
-                    let htmlError : string;
+                if (error.status == 422) {
+                    let htmlError: string;
                     for (let msj in error.error.errors) {
                         htmlError = error.error.errors[msj];
                     }

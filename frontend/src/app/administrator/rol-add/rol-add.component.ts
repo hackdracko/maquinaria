@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
@@ -8,11 +8,12 @@ import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialo
 import * as _ from 'lodash';
 
 @Component({
-    selector: 'app-user-add',
-    templateUrl: './user-add.component.html',
-    styleUrls: ['./user-add.component.css']
+  selector: 'app-rol-add',
+  templateUrl: './rol-add.component.html',
+  styleUrls: ['./rol-add.component.css']
 })
-export class UserAddComponent implements OnInit {
+export class RolAddComponent implements OnInit {
+
     /**
      * Indicates FormGroup
      * @type {FormGroup}
@@ -39,25 +40,14 @@ export class UserAddComponent implements OnInit {
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            lastname: [null,
-            ],
-            lastsurname: [null,
-            ],
-            email: [null,
-                Validators.compose([
-                    Validators.required, Validators.email
-                ])
-            ],
         });
     }
 
     get name() { return this.formGroup.get('name'); }
-    get email() { return this.formGroup.get('email'); }
-    get password() { return this.formGroup.get('password'); }
 
 
     public back(){
-        this.router.navigate(['administrator/user']);
+        this.router.navigate(['administrator/rol']);
     }
 
     public cancel(){
@@ -76,7 +66,7 @@ export class UserAddComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de crear un nuevo Usuario'}
+            data: {title: 'Información', description: 'Estas seguro de crear un nuevo Rol'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -86,21 +76,18 @@ export class UserAddComponent implements OnInit {
     }
 
     public save(){
-        console.log("Save User");
+        console.log("Save Rol");
         this.loading = true;
         this.formLock();
         let data = {
-            "name": this.formGroup.value.name,
-            "lastname": this.formGroup.value.lastname,
-            "lastsurname": this.formGroup.value.lastsurname,
-            "email": this.formGroup.value.email,
+            "role": this.formGroup.value.name,
         };
-        this.authenticationService.post('user', data).subscribe(
+        this.authenticationService.post('rol', data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Usuario se creo correctamente");
-                this.router.navigate(['administrator/user']);
+                this.dialogInfo("Información", "El Rol se creo correctamente");
+                this.router.navigate(['administrator/rol']);
             },
             (error) => {
                 if(error.status == 422){

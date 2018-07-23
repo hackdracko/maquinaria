@@ -46,6 +46,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {WidgetsModule} from "../@common/widgets/widgets.module";
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { RolComponent } from './rol/rol.component';
+import { RolAddComponent } from './rol-add/rol-add.component';
+import { RolEditComponent } from './rol-edit/rol-edit.component';
 
 @NgModule({
     imports: [
@@ -94,7 +96,9 @@ import { RolComponent } from './rol/rol.component';
                     UserComponent,
                     UserAddComponent,
                     UserEditComponent,
-                    RolComponent]
+                    RolComponent,
+                    RolAddComponent,
+                    RolEditComponent]
 })
 export class AdministratorModule {
 }
