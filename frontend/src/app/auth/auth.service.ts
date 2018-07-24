@@ -82,6 +82,10 @@ export class AuthService {
         return this.http.put(this.url + url, params, this.httpOptions);
     }
 
+    delete(url: string): Observable<any> {
+        return this.http.delete(this.url + url, this.httpOptions);
+    }
+
     private handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

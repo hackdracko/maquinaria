@@ -14,7 +14,18 @@ class CatModelController extends Controller
      */
     public function index()
     {
-        $models = CatModel::paginate(20);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $models = CatModel::where(function($models) use ($search)
+        {
+            if (!empty($search)) {
+                $models->Where('title', 'like', '%' . $search . '%');
+            }
+        })
+            ->paginate(20);
         return response()->json($models);
     }
 
@@ -56,7 +67,8 @@ class CatModelController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = CatModel::findOrFail($id);
+        return response()->json($model);
     }
 
     /**

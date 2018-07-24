@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <h2 class="page-title">
+                <mat-icon>event_note</mat-icon>
+                Nuevo Modelo
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <button mat-raised-button color="accent" (click)="back()">Regresar</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Titulo
+                    </mat-placeholder>
+                    <input matInput formControlName="title">
+                    <mat-error *ngIf="formGroup.get('title').hasError('required')">
+                        El campo Título es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="title.errors?.minlength">
+                        El campo Título debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Descripción
+                    </mat-placeholder>
+                    <textarea matInput formControlName="description"></textarea>
+                    <mat-error *ngIf="formGroup.get('description').hasError('required')">
+                        El campo Nombre es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="description.errors?.minlength">
+                        El campo Nombre debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="col-sm-12 col-md-12 col-xs-12 text-right">
+                    <button mat-raised-button (click)="cancel()">Cancelar</button>
+                    <button mat-raised-button color="primary" [disabled]="!this.formGroup.valid"
+                            (click)="dialogConfirm()">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>

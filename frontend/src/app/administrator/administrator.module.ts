@@ -48,6 +48,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { RolComponent } from './rol/rol.component';
 import { RolAddComponent } from './rol-add/rol-add.component';
 import { RolEditComponent } from './rol-edit/rol-edit.component';
+import { ModelComponent } from './model/model.component';
+import { ModelAddComponent } from './model-add/model-add.component';
+import { ModelEditComponent } from './model-edit/model-edit.component';
 
 @NgModule({
     imports: [
@@ -98,7 +101,10 @@ import { RolEditComponent } from './rol-edit/rol-edit.component';
                     UserEditComponent,
                     RolComponent,
                     RolAddComponent,
-                    RolEditComponent]
+                    RolEditComponent,
+                    ModelComponent,
+                    ModelAddComponent,
+                    ModelEditComponent]
 })
 export class AdministratorModule {
 }
