@@ -10,11 +10,11 @@ import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialo
 import {DialogInfoComponent} from "../../@common/widgets/dialog-info/dialog-info.component";
 
 @Component({
-  selector: 'app-model',
-  templateUrl: './model.component.html',
-  styleUrls: ['./model.component.css']
+  selector: 'app-machine',
+  templateUrl: './machine.component.html',
+  styleUrls: ['./machine.component.css']
 })
-export class ModelComponent implements OnInit {
+export class MachineComponent implements OnInit {
     /**
      * Paginator for table
      * */
@@ -67,7 +67,7 @@ export class ModelComponent implements OnInit {
     }
 
     public getIndex(search){
-        console.log("Get Models");
+        console.log("Get Machines");
         if(search != ''){
             this.paginator.pageIndex = 0;
         }
@@ -76,7 +76,7 @@ export class ModelComponent implements OnInit {
                 startWith({}),
                 switchMap(() => {
                     this.loading = true;
-                    return this.authenticationService.get('model',
+                    return this.authenticationService.get('machine',
                         `?page=${this.paginator.pageIndex + 1}&search=${search}`
                     );
                 }),
@@ -94,20 +94,20 @@ export class ModelComponent implements OnInit {
     }
 
     public add(){
-        this.router.navigate(['administrator/model/add']);
+        this.router.navigate(['administrator/machine/add']);
     }
 
     public edit(id){
-        this.router.navigate(['administrator/model/edit/' + id]);
+        this.router.navigate(['administrator/machine/edit/' + id]);
     }
 
     public delete(id){
         console.log("Delete Model");
         this.loading = true;
-        this.authenticationService.delete('model/' + id).subscribe(
+        this.authenticationService.delete('machine/' + id).subscribe(
             payload => {
                 this.loading = false;
-                this.dialogInfo("Información", "El Modelo se eliminó correctamente");
+                this.dialogInfo("Información", "La Maquina se eliminó correctamente");
                 this.getIndex('');
             },
             (error) => {
@@ -135,7 +135,7 @@ export class ModelComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de eliminar el Modelo'}
+            data: {title: 'Información', description: 'Estas seguro de eliminar la Maquina'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -143,5 +143,4 @@ export class ModelComponent implements OnInit {
             }
         });
     }
-
 }

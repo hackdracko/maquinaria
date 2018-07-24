@@ -9,6 +9,9 @@ import {RolEditComponent} from "../rol-edit/rol-edit.component";
 import {ModelComponent} from "../model/model.component";
 import {ModelAddComponent} from "../model-add/model-add.component";
 import {ModelEditComponent} from "../model-edit/model-edit.component";
+import {MachineComponent} from "../machine/machine.component";
+import {MachineAddComponent} from "../machine-add/machine-add.component";
+import {MachineEditComponent} from "../machine-edit/machine-edit.component";
 
 export const ROUTES: Routes = [
     {
@@ -50,6 +53,18 @@ export const ROUTES: Routes = [
             {
                 path: 'model/edit/:id',
                 component: ModelEditComponent
+            },
+            {
+                path: 'machine',
+                component: MachineComponent
+            },
+            {
+                path: 'machine/add',
+                component: MachineAddComponent
+            },
+            {
+                path: 'machine/edit/:id',
+                component: MachineEditComponent
             },
         ]
     }

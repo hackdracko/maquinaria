@@ -14,7 +14,18 @@ class CatMachineController extends Controller
      */
     public function index()
     {
-        $machines = CatMachine::paginate(20);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $machines = CatMachine::where(function($machines) use ($search)
+        {
+            if (!empty($search)) {
+                $machines->Where('title', 'like', '%' . $search . '%');
+            }
+        })
+            ->paginate(20);
         return response()->json($machines);
     }
 
@@ -56,7 +67,8 @@ class CatMachineController extends Controller
      */
     public function show($id)
     {
-        //
+        $machine = CatMachine::findOrFail($id);
+        return response()->json($machine);
     }
 
     /**

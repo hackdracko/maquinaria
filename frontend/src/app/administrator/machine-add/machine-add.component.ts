@@ -8,11 +8,11 @@ import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialo
 import * as _ from 'lodash';
 
 @Component({
-    selector: 'app-model-add',
-    templateUrl: './model-add.component.html',
-    styleUrls: ['./model-add.component.css']
+    selector: 'app-machine-add',
+    templateUrl: './machine-add.component.html',
+    styleUrls: ['./machine-add.component.css']
 })
-export class ModelAddComponent implements OnInit {
+export class MachineAddComponent implements OnInit {
     /**
      * Indicates FormGroup
      * @type {FormGroup}
@@ -57,7 +57,7 @@ export class ModelAddComponent implements OnInit {
 
 
     public back() {
-        this.router.navigate(['administrator/model']);
+        this.router.navigate(['administrator/machine']);
     }
 
     public cancel() {
@@ -76,7 +76,7 @@ export class ModelAddComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de crear un nuevo Modelo'}
+            data: {title: 'Información', description: 'Estas seguro de crear una nueva Maquina'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -86,19 +86,19 @@ export class ModelAddComponent implements OnInit {
     }
 
     public save() {
-        console.log("Save Model");
+        console.log("Save Machine");
         this.loading = true;
         this.formLock();
         let data = {
             "title": this.formGroup.value.title,
             "description": this.formGroup.value.description,
         };
-        this.authenticationService.post('model', data).subscribe(
+        this.authenticationService.post('machine', data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Modelo se creo correctamente");
-                this.router.navigate(['administrator/model']);
+                this.dialogInfo("Información", "La Maquina se creo correctamente");
+                this.router.navigate(['administrator/machine']);
             },
             (error) => {
                 if (error.status == 422) {
@@ -133,5 +133,4 @@ export class ModelAddComponent implements OnInit {
             this.formGroup.get(ctrl).enable();
         });
     }
-
 }
