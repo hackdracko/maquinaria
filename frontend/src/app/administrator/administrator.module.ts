@@ -57,6 +57,9 @@ import { MachineEditComponent } from './machine-edit/machine-edit.component';
 import { ProcessComponent } from './process/process.component';
 import { ProcessAddComponent } from './process-add/process-add.component';
 import { ProcessEditComponent } from './process-edit/process-edit.component';
+import { TurnComponent } from './turn/turn.component';
+import { TurnAddComponent } from './turn-add/turn-add.component';
+import { TurnEditComponent } from './turn-edit/turn-edit.component';
 
 @NgModule({
     imports: [
@@ -116,7 +119,10 @@ import { ProcessEditComponent } from './process-edit/process-edit.component';
                     MachineEditComponent,
                     ProcessComponent,
                     ProcessAddComponent,
-                    ProcessEditComponent]
+                    ProcessEditComponent,
+                    TurnComponent,
+                    TurnAddComponent,
+                    TurnEditComponent]
 })
 export class AdministratorModule {
 }

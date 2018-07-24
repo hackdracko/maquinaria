@@ -15,6 +15,9 @@ import {MachineEditComponent} from "../machine-edit/machine-edit.component";
 import {ProcessComponent} from "../process/process.component";
 import {ProcessAddComponent} from "../process-add/process-add.component";
 import {ProcessEditComponent} from "../process-edit/process-edit.component";
+import {TurnComponent} from "../turn/turn.component";
+import {TurnAddComponent} from "../turn-add/turn-add.component";
+import {TurnEditComponent} from "../turn-edit/turn-edit.component";
 
 export const ROUTES: Routes = [
     {
@@ -80,6 +83,18 @@ export const ROUTES: Routes = [
             {
                 path: 'process/edit/:id',
                 component: ProcessEditComponent
+            },
+            {
+                path: 'turn',
+                component: TurnComponent
+            },
+            {
+                path: 'turn/add',
+                component: TurnAddComponent
+            },
+            {
+                path: 'turn/edit/:id',
+                component: TurnEditComponent
             },
         ]
     }

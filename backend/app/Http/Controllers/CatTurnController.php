@@ -14,7 +14,18 @@ class CatTurnController extends Controller
      */
     public function index()
     {
-        $turns = CatTurn::paginate(20);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $turns = CatTurn::where(function($turns) use ($search)
+        {
+            if (!empty($search)) {
+                $turns->Where('title', 'like', '%' . $search . '%');
+            }
+        })
+            ->paginate(20);
         return response()->json($turns);
     }
 
@@ -56,7 +67,8 @@ class CatTurnController extends Controller
      */
     public function show($id)
     {
-        //
+        $turn = CatTurn::findOrFail($id);
+        return response()->json($turn);
     }
 
     /**
