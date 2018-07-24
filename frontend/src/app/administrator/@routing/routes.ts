@@ -12,6 +12,9 @@ import {ModelEditComponent} from "../model-edit/model-edit.component";
 import {MachineComponent} from "../machine/machine.component";
 import {MachineAddComponent} from "../machine-add/machine-add.component";
 import {MachineEditComponent} from "../machine-edit/machine-edit.component";
+import {ProcessComponent} from "../process/process.component";
+import {ProcessAddComponent} from "../process-add/process-add.component";
+import {ProcessEditComponent} from "../process-edit/process-edit.component";
 
 export const ROUTES: Routes = [
     {
@@ -65,6 +68,18 @@ export const ROUTES: Routes = [
             {
                 path: 'machine/edit/:id',
                 component: MachineEditComponent
+            },
+            {
+                path: 'process',
+                component: ProcessComponent
+            },
+            {
+                path: 'process/add',
+                component: ProcessAddComponent
+            },
+            {
+                path: 'process/edit/:id',
+                component: ProcessEditComponent
             },
         ]
     }

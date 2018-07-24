@@ -14,7 +14,18 @@ class CatProcessController extends Controller
      */
     public function index()
     {
-        $process = CatProcess::paginate(20);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $process = CatProcess::where(function($process) use ($search)
+        {
+            if (!empty($search)) {
+                $process->Where('title', 'like', '%' . $search . '%');
+            }
+        })
+            ->paginate(20);
         return response()->json($process);
     }
 
@@ -56,7 +67,8 @@ class CatProcessController extends Controller
      */
     public function show($id)
     {
-        //
+        $process = CatProcess::findOrFail($id);
+        return response()->json($process);
     }
 
     /**

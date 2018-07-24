@@ -10,11 +10,11 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {ICatalog} from "../../@common/models";
 
 @Component({
-    selector: 'app-machine-edit',
-    templateUrl: './machine-edit.component.html',
-    styleUrls: ['./machine-edit.component.css']
+    selector: 'app-process-edit',
+    templateUrl: './process-edit.component.html',
+    styleUrls: ['./process-edit.component.css']
 })
-export class MachineEditComponent implements OnInit {
+export class ProcessEditComponent implements OnInit {
     /**
      * Indicates FormGroup
      * @type {FormGroup}
@@ -82,7 +82,7 @@ export class MachineEditComponent implements OnInit {
     }
 
     public back() {
-        this.router.navigate(['administrator/machine']);
+        this.router.navigate(['administrator/process']);
     }
 
     public dialogInfo(tit, desc) {
@@ -97,7 +97,7 @@ export class MachineEditComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de editar la Máquina'}
+            data: {title: 'Información', description: 'Estas seguro de editar el Proceso'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -109,7 +109,7 @@ export class MachineEditComponent implements OnInit {
     public getInfo() {
         console.log("Info");
         this.loading = true;
-        this.authenticationService.get('machine/' + this.id, '').subscribe(
+        this.authenticationService.get('process/' + this.id, '').subscribe(
             payload => {
                 this.loading = false;
                 this.result = payload;
@@ -123,19 +123,19 @@ export class MachineEditComponent implements OnInit {
     }
 
     public save() {
-        console.log("Save Machine");
+        console.log("Save Process");
         this.loading = true;
         this.formLock();
         let data = {
             "title": this.formGroup.value.title,
             "description": this.formGroup.value.description,
         };
-        this.authenticationService.put('machine/' + this.id, data).subscribe(
+        this.authenticationService.put('process/' + this.id, data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "La Máquina se edito correctamente");
-                this.router.navigate(['administrator/machine']);
+                this.dialogInfo("Información", "El Proceso se edito correctamente");
+                this.router.navigate(['administrator/process']);
             },
             (error) => {
                 if (error.status == 422) {
