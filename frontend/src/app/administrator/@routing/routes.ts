@@ -18,6 +18,9 @@ import {ProcessEditComponent} from "../process-edit/process-edit.component";
 import {TurnComponent} from "../turn/turn.component";
 import {TurnAddComponent} from "../turn-add/turn-add.component";
 import {TurnEditComponent} from "../turn-edit/turn-edit.component";
+import {ProductComponent} from "../product/product.component";
+import {ProductAddComponent} from "../product-add/product-add.component";
+import {ProductEditComponent} from "../product-edit/product-edit.component";
 
 export const ROUTES: Routes = [
     {
@@ -95,6 +98,18 @@ export const ROUTES: Routes = [
             {
                 path: 'turn/edit/:id',
                 component: TurnEditComponent
+            },
+            {
+                path: 'product',
+                component: ProductComponent
+            },
+            {
+                path: 'product/add',
+                component: ProductAddComponent
+            },
+            {
+                path: 'product/edit/:id',
+                component: ProductEditComponent
             },
         ]
     }

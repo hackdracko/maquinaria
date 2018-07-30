@@ -19,4 +19,11 @@ class CatModel extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+    /**
+     * Get the product for the Product.
+     */
+    public function products()
+    {
+        return $this->hasMany('App\CatModel');
+    }
 }

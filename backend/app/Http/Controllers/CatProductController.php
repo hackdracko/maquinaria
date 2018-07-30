@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CatProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CatProductController extends Controller
 {
@@ -14,8 +15,20 @@ class CatProductController extends Controller
      */
     public function index()
     {
-        $products = CatProduct::paginate(20);
-        return response()->json($products);
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+        }else{
+            $search = '';
+        }
+        $products = DB::table('cat_products')
+            ->join('cat_models', 'cat_products.cat_model_id', '=', 'cat_models.id')
+            ->select('cat_products.id AS id', 'cat_products.title AS title', 'cat_products.description AS description', 'cat_products.created_at AS created_at', 'cat_models.title AS title_model')
+            ->whereNull('cat_products.deleted_at');
+        if (!empty($search)) {
+            $products->where('cat_products.title', 'like', '%' . $search . '%');
+            $products->orWhere('cat_models.title', 'like', '%' . $search . '%');
+        }
+        return $products->paginate(20);
     }
 
     /**
@@ -58,7 +71,8 @@ class CatProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = CatProduct::findOrFail($id);
+        return response()->json($product);
     }
 
     /**

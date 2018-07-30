@@ -1,10 +1,12 @@
-export interface ICatalog {
+import {ICatalog} from "..";
+
+export interface ICatalogProduct {
     id: number;
-    cat_model_id: number,
     title: string;
     description: string;
-    title_model?: string;
+    cat_model_id: number;
     created_at?: any;
     updated_at?: any;
     deleted_at?: any;
+    model: ICatalog;
 }
