@@ -13,11 +13,11 @@ import {st} from "@angular/core/src/render3";
 import {IPaginate} from "../../@common/models/IPaginate";
 
 @Component({
-    selector: 'app-stock-add',
-    templateUrl: './stock-add.component.html',
-    styleUrls: ['./stock-add.component.css']
+    selector: 'app-stock-entries',
+    templateUrl: './stock-entries.component.html',
+    styleUrls: ['./stock-entries.component.css']
 })
-export class StockAddComponent implements OnInit {
+export class StockEntriesComponent implements OnInit {
     /**
      * Columns Displayed
      * */

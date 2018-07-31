@@ -8,5 +8,6 @@ export interface ICatalogProduct {
     created_at?: any;
     updated_at?: any;
     deleted_at?: any;
+    total?: number;
     model: ICatalog;
 }

@@ -22,8 +22,8 @@ import {ProductComponent} from "../product/product.component";
 import {ProductAddComponent} from "../product-add/product-add.component";
 import {ProductEditComponent} from "../product-edit/product-edit.component";
 import {StockComponent} from "../stock/stock.component";
-import {StockAddComponent} from "../stock-add/stock-add.component";
-import {StockEditComponent} from "../stock-edit/stock-edit.component";
+import {StockEntriesComponent} from "../stock-entries/stock-entries.component";
+import {StockDeparturesComponent} from "../stock-departures/stock-departures.component";
 
 export const ROUTES: Routes = [
     {
@@ -119,12 +119,12 @@ export const ROUTES: Routes = [
                 component: StockComponent
             },
             {
-                path: 'stock/add',
-                component: StockAddComponent
+                path: 'stock/entries',
+                component: StockEntriesComponent
             },
             {
-                path: 'stock/edit/:id',
-                component: StockEditComponent
+                path: 'stock/departures',
+                component: StockDeparturesComponent
             },
         ]
     }

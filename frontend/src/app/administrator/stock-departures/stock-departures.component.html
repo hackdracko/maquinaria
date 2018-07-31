@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <h2 class="page-title">
+                <mat-icon>event_note</mat-icon>
+                Salida Inventario
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <button mat-raised-button color="accent" (click)="back()">Regresar</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <form [formGroup]="formGroup">
+            <div class="row">
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Elige un Producto
+                    </mat-placeholder>
+                    <mat-select formControlName="product">
+                        <mat-option *ngFor="let product of resultProduct?.products" [value]="product.id">
+                            <b class="alert-success">Producto:</b> {{product.title}}
+                            <b class="alert-info">Modelo:</b> {{product.model.title}}
+                            <b class="alert-warning">Inventario Total:</b> {{product.total}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.get('product').hasError('required')">
+                        El campo Producto es obligatorio
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Descripcion
+                    </mat-placeholder>
+                    <input matInput formControlName="description">
+                    <mat-error *ngIf="formGroup.get('description').hasError('required')">
+                        El campo Descripción es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="description.errors?.minlength">
+                        El campo Descripción debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Número de Piezas
+                    </mat-placeholder>
+                    <input matInput type="number" formControlName="pieces">
+                    <mat-error *ngIf="formGroup.get('pieces').hasError('required')">
+                        El campo Piezas es obligatorio
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="col-sm-12 col-md-12 col-xs-12 text-center">
+                    <button mat-raised-button (click)="cancel()">Cancelar</button>
+                    <button mat-raised-button color="accent" [disabled]="!this.formGroup.valid"
+                            (click)="save()">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="mat-elevation-z8">
+                <mat-table #table [dataSource]="dataSource" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+                    <ng-container matColumnDef="position">
+                        <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
+                        <mat-cell *matCellDef="let data; let incremental = index">
+                            {{incremental + 1}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="product">
+                        <mat-header-cell *matHeaderCellDef> Producto</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.product.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="model">
+                        <mat-header-cell *matHeaderCellDef> Modelo</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.product.model.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef> Descripcón</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.description}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="pieces">
+                        <mat-header-cell *matHeaderCellDef> Piezas</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.pieces}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="date_add">
+                        <mat-header-cell *matHeaderCellDef> Fecha Creación</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.created_at}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
+                        <mat-cell *matCellDef="let data">
+                            <a (click)="dialogConfirm(data.id)" class="fa  fa-trash" aria-hidden="true">Borrar</a>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+            <div class="mat-elevation-z8">
+                <mat-paginator [length]="resultsLength" [pageSize]="perPage" #paginator>
+                </mat-paginator>
+            </div>
+        </form>
+    </div>
+</div>

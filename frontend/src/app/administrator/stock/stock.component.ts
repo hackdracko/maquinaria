@@ -93,8 +93,12 @@ export class StockComponent implements OnInit {
             ).subscribe((data: ICatalog[]) => this.dataSource.data = data);
     }
 
-    public add() {
-        this.router.navigate(['administrator/stock/add']);
+    public entries() {
+        this.router.navigate(['administrator/stock/entries']);
+    }
+
+    public departures() {
+        this.router.navigate(['administrator/stock/departures']);
     }
 
     public edit(id) {

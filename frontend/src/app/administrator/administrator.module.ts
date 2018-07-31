@@ -64,8 +64,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { StockComponent } from './stock/stock.component';
-import { StockAddComponent } from './stock-add/stock-add.component';
-import { StockEditComponent } from './stock-edit/stock-edit.component';
+import { StockEntriesComponent } from './stock-entries/stock-entries.component';
+import {StockDeparturesComponent} from "./stock-departures/stock-departures.component";
 
 @NgModule({
     imports: [
@@ -133,8 +133,8 @@ import { StockEditComponent } from './stock-edit/stock-edit.component';
                     ProductAddComponent,
                     ProductEditComponent,
                     StockComponent,
-                    StockAddComponent,
-                    StockEditComponent]
+                    StockEntriesComponent,
+                    StockDeparturesComponent,]
 })
 export class AdministratorModule {
 }

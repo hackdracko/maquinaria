@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('/turn', 'CatTurnController');
     Route::get('/stock/entries', 'StockController@entries');
     Route::get('/stock/departures', 'StockController@departures');
+    Route::get('/stock/comboDepartures', 'StockController@comboDepartures');
     Route::resource('/stock', 'StockController');
 });
 
