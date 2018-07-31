@@ -120,4 +120,15 @@ class CatProductController extends Controller
         $product = CatProduct::findOrFail($id);
         return response()->json($product->delete());
     }
+    /**
+     * Display combo Products.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function comboProducts()
+    {
+        $products = CatProduct::with('model');
+        $response = ['products' => $products->get()];
+        return response()->json($response);
+    }
 }

@@ -35,4 +35,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+    /**
+     * Get the product for the Product.
+     */
+    public function stocks()
+    {
+        return $this->hasMany('App\Stock');
+    }
 }

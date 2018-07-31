@@ -63,6 +63,9 @@ import { TurnEditComponent } from './turn-edit/turn-edit.component';
 import { ProductComponent } from './product/product.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { StockComponent } from './stock/stock.component';
+import { StockAddComponent } from './stock-add/stock-add.component';
+import { StockEditComponent } from './stock-edit/stock-edit.component';
 
 @NgModule({
     imports: [
@@ -128,7 +131,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
                     TurnEditComponent,
                     ProductComponent,
                     ProductAddComponent,
-                    ProductEditComponent]
+                    ProductEditComponent,
+                    StockComponent,
+                    StockAddComponent,
+                    StockEditComponent]
 })
 export class AdministratorModule {
 }

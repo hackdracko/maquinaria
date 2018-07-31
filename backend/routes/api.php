@@ -23,10 +23,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('/user', 'UserController');
     Route::resource('/model', 'CatModelController');
     Route::resource('/rol', 'RolController');
+    Route::get('/product/combo', 'CatProductController@comboProducts');
     Route::resource('/product', 'CatProductController');
     Route::resource('/machine', 'CatMachineController');
     Route::resource('/process', 'CatProcessController');
     Route::resource('/turn', 'CatTurnController');
+    Route::get('/stock/entries', 'StockController@entries');
+    Route::get('/stock/departures', 'StockController@departures');
+    Route::resource('/stock', 'StockController');
 });
 
 /*Route::post('authorize', 'API\PassportController@login');
