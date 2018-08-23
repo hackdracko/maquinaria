@@ -3,12 +3,13 @@
         <div class="col-sm-12 col-md-6 col-xs-6">
             <h2 class="page-title">
                 <mat-icon>event_note</mat-icon>
-                Administración Productos
+                Administración de Unidades
             </h2>
         </div>
         <div class="col-sm-12 col-md-6 col-xs-6 text-right">
             <button mat-raised-button color="accent" (click)="add()">
-                <mat-icon>add_circle</mat-icon>&nbsp;
+                <mat-icon>add_circle</mat-icon>
+                &nbsp;
                 <span>Nuevo</span>
             </button>
         </div>
@@ -18,7 +19,7 @@
             <mat-form-field class="full-input">
                 <mat-placeholder>
                     <mat-icon class="align-icon">search</mat-icon>
-                    Buscar Producto
+                    Buscar Unidad
                 </mat-placeholder>
                 <input autocomplete="false" matInput (keyup)="search($event.target.value)">
             </mat-form-field>
@@ -29,26 +30,22 @@
         <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="row">
-        <div *ngFor="let product of dataSource.filteredData" class="col-sm-12 col-md-4 col-xs-4">
+        <div *ngFor="let model of dataSource.filteredData" class="col-sm-12 col-md-4 col-xs-4">
             <mat-card class="spacer">
                 <mat-card-title>
-                    {{product.title}}
+                    {{model.title}}
                 </mat-card-title>
                 <p>
-                    <strong class="blue"> Código:</strong> {{product.code}}
+                    <strong class="blue"> Titulo:</strong> {{model.title}}
                     <br>
-                    <strong class="blue"> Titulo:</strong> {{product.title}}
+                    <strong class="blue"> Descripción:</strong> {{model.description}}
                     <br>
-                    <strong class="blue"> Descripción:</strong> {{product.description}}
-                    <br>
-                    <strong class="blue"> Modelo:</strong> {{product.title_model}}
-                    <br>
-                    <strong class="blue"> Fecha Creación:</strong> {{product.created_at}}
+                    <strong class="blue"> Fecha Creación:</strong> {{model.created_at}}
                     <br>
                 </p>
                 <div class="row">
-                    <button mat-raised-button color="primary" (click)="edit(product.id)">Editar</button>
-                    <button mat-raised-button color="warn" (click)="dialogConfirm(product.id)">
+                    <button mat-raised-button color="primary" (click)="edit(model.id)">Editar</button>
+                    <button mat-raised-button color="warn" (click)="dialogConfirm(model.id)">
                         Eliminar
                     </button>
                 </div>

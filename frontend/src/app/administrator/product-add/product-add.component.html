@@ -22,6 +22,19 @@
                 <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
                     <mat-placeholder>
                         <mat-icon class="align-icon">title</mat-icon>
+                        Código
+                    </mat-placeholder>
+                    <input matInput formControlName="code">
+                    <mat-error *ngIf="formGroup.get('code').hasError('required')">
+                        El campo Código es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="code.errors?.minlength">
+                        El campo Código debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
                         Titulo
                     </mat-placeholder>
                     <input matInput formControlName="title">

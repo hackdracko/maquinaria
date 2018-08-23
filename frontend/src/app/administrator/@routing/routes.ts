@@ -24,6 +24,12 @@ import {ProductEditComponent} from "../product-edit/product-edit.component";
 import {StockComponent} from "../stock/stock.component";
 import {StockEntriesComponent} from "../stock-entries/stock-entries.component";
 import {StockDeparturesComponent} from "../stock-departures/stock-departures.component";
+import {UnitComponent} from "../unit/unit.component";
+import {UnitAddComponent} from "../unit-add/unit-add.component";
+import {UnitEditComponent} from "../unit-edit/unit-edit.component";
+import {TypeComponent} from "../type/type.component";
+import {TypeAddComponent} from "../type-add/type-add.component";
+import {TypeEditComponent} from "../type-edit/type-edit.component";
 
 export const ROUTES: Routes = [
     {
@@ -125,6 +131,30 @@ export const ROUTES: Routes = [
             {
                 path: 'stock/departures',
                 component: StockDeparturesComponent
+            },
+            {
+                path: 'unit',
+                component: UnitComponent
+            },
+            {
+                path: 'unit/add',
+                component: UnitAddComponent
+            },
+            {
+                path: 'unit/edit/:id',
+                component: UnitEditComponent
+            },
+            {
+                path: 'type',
+                component: TypeComponent
+            },
+            {
+                path: 'type/add',
+                component: TypeAddComponent
+            },
+            {
+                path: 'type/edit/:id',
+                component: TypeEditComponent
             },
         ]
     }

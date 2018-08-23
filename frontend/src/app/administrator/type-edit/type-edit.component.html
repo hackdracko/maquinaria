@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-12 col-xs-12">
             <h2 class="page-title">
                 <mat-icon>event_note</mat-icon>
-                Editar Producto
+                Editar Tipo de Madera
             </h2>
         </div>
     </div>
@@ -19,19 +19,6 @@
     <div class="row">
         <form [formGroup]="formGroup">
             <div class="row">
-                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
-                    <mat-placeholder>
-                        <mat-icon class="align-icon">title</mat-icon>
-                        Código
-                    </mat-placeholder>
-                    <input matInput formControlName="code">
-                    <mat-error *ngIf="formGroup.get('code').hasError('required')">
-                        El campo Código es obligatorio
-                    </mat-error>
-                    <mat-error *ngIf="code.errors?.minlength">
-                        El campo Código debe tener minimo 3 caracteres
-                    </mat-error>
-                </mat-form-field>
                 <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
                     <mat-placeholder>
                         <mat-icon class="align-icon">title</mat-icon>
@@ -63,15 +50,29 @@
                 <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
                     <mat-placeholder>
                         <mat-icon class="align-icon">title</mat-icon>
-                        Modelo
+                        Ciclos
                     </mat-placeholder>
-                    <mat-select formControlName="model">
-                        <mat-option *ngFor="let model of resultModel" [value]="model.id">
-                            {{model.title}}
+                    <textarea matInput formControlName="cicles"></textarea>
+                    <mat-error *ngIf="formGroup.get('cicles').hasError('required')">
+                        El campo Ciclos es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="cicles.errors?.minlength">
+                        El campo Ciclos debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-12 col-xs-12">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Tipo
+                    </mat-placeholder>
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let type of typeData" [value]="type.id">
+                            {{type.name}}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="formGroup.get('model').hasError('required')">
-                        El campo Modelo es obligatorio
+                    <mat-error *ngIf="formGroup.get('type').hasError('required')">
+                        El campo Ciclo es obligatorio
                     </mat-error>
                 </mat-form-field>
 

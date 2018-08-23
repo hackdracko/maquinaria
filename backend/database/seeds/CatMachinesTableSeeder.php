@@ -12,16 +12,16 @@ class CatMachinesTableSeeder extends Seeder
     public function run()
     {
         DB::table('cat_machines')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Maquina 1",
+            'description' => "Maquina 1",
         ]);
         DB::table('cat_machines')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Maquina 2",
+            'description' => "Maquina 2",
         ]);
         DB::table('cat_machines')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Maquina 3",
+            'description' => "Maquina 3",
         ]);
     }
 }

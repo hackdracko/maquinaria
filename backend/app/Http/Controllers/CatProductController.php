@@ -22,10 +22,11 @@ class CatProductController extends Controller
         }
         $products = DB::table('cat_products')
             ->join('cat_models', 'cat_products.cat_model_id', '=', 'cat_models.id')
-            ->select('cat_products.id AS id', 'cat_products.title AS title', 'cat_products.description AS description', 'cat_products.created_at AS created_at', 'cat_models.title AS title_model')
+            ->select('cat_products.id AS id', 'cat_products.title AS title', 'cat_products.description AS description', 'cat_products.created_at AS created_at', 'cat_models.title AS title_model', 'cat_products.code AS code')
             ->whereNull('cat_products.deleted_at');
         if (!empty($search)) {
             $products->where('cat_products.title', 'like', '%' . $search . '%');
+            $products->orWhere('cat_products.code', 'like', '%' . $search . '%');
             $products->orWhere('cat_models.title', 'like', '%' . $search . '%');
         }
         return $products->paginate(20);
@@ -50,12 +51,14 @@ class CatProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'code' => 'required|min:3|max:50',
             'title' => 'required|min:3|max:50',
             'description' => 'required|min:3|',
             'cat_model_id' => 'required|integer|'
         ]);
 
         $product = new CatProduct();
+        $product->code = $request->get('code');
         $product->title = $request->get('title');
         $product->description = $request->get('description');
         $product->cat_model_id = $request->get('cat_model_id');
@@ -96,12 +99,14 @@ class CatProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'code' => 'required|min:3|max:50',
             'title' => 'required|min:3|max:50',
             'description' => 'required|min:3|',
             'cat_model_id' => 'required|integer|'
         ]);
 
         $product = CatProduct::findOrFail($id);
+        $product->code = $request->get('code');
         $product->title = $request->get('title');
         $product->description = $request->get('description');
         $product->cat_model_id = $request->get('cat_model_id');

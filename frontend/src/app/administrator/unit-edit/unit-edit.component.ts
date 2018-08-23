@@ -10,11 +10,11 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {ICatalog} from "../../@common/models";
 
 @Component({
-    selector: 'app-product-edit',
-    templateUrl: './product-edit.component.html',
-    styleUrls: ['./product-edit.component.css']
+    selector: 'app-unit-edit',
+    templateUrl: './unit-edit.component.html',
+    styleUrls: ['./unit-edit.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class UnitEditComponent implements OnInit {
     /**
      * Indicates FormGroup
      * @type {FormGroup}
@@ -40,19 +40,12 @@ export class ProductEditComponent implements OnInit {
      * @type {ICatalog}
      */
     public result: ICatalog | null;
-    /**
-     * Result User
-     * @type {ICatalog}
-     */
-    public resultModel: ICatalog | null;
 
-    constructor(
-        private dialog: MatDialog,
-        private router: Router,
-        private readonly route: ActivatedRoute,
-        private _formBuilder: FormBuilder,
-        private authenticationService: AuthService,
-    ) {
+    constructor(private dialog: MatDialog,
+                private router: Router,
+                private readonly route: ActivatedRoute,
+                private _formBuilder: FormBuilder,
+                private authenticationService: AuthService,) {
     }
 
     ngOnInit() {
@@ -61,16 +54,10 @@ export class ProductEditComponent implements OnInit {
         });
         this.form();
         this.getInfo();
-        this.getModels();
     }
 
     public form() {
         this.formGroup = this._formBuilder.group({
-            code: [this.result ? this.result.code : null,
-                Validators.compose([
-                    Validators.required, Validators.minLength(3)
-                ])
-            ],
             title: [this.result ? this.result.title : null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
@@ -81,16 +68,7 @@ export class ProductEditComponent implements OnInit {
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            model: [this.result ? this.result.cat_model_id : null,
-                Validators.compose([
-                    Validators.required
-                ])
-            ],
         });
-    }
-
-    get code() {
-        return this.formGroup.get('code');
     }
 
     get title() {
@@ -102,7 +80,7 @@ export class ProductEditComponent implements OnInit {
     }
 
     public back() {
-        this.router.navigate(['administrator/product']);
+        this.router.navigate(['administrator/unit']);
     }
 
     public dialogInfo(tit, desc) {
@@ -117,7 +95,7 @@ export class ProductEditComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de editar el Producto'}
+            data: {title: 'Información', description: 'Estas seguro de editar la Unidad'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -129,7 +107,7 @@ export class ProductEditComponent implements OnInit {
     public getInfo() {
         console.log("Info");
         this.loading = true;
-        this.authenticationService.get('product/' + this.id, '').subscribe(
+        this.authenticationService.get('unit/' + this.id, '').subscribe(
             payload => {
                 this.loading = false;
                 this.result = payload;
@@ -142,38 +120,20 @@ export class ProductEditComponent implements OnInit {
         );
     }
 
-    public getModels() {
-        console.log("Models");
-        this.loading = true;
-        this.authenticationService.get('model', '').subscribe(
-            payload => {
-                this.loading = false;
-                this.resultModel = payload.data;
-                //this.form();
-            },
-            (error) => {
-                this.loading = false;
-                console.log("Error " + error);
-            }
-        );
-    }
-
     public save() {
-        console.log("Save Product");
+        console.log("Save Turns");
         this.loading = true;
         this.formLock();
         let data = {
-            "code": this.formGroup.value.code,
             "title": this.formGroup.value.title,
             "description": this.formGroup.value.description,
-            "cat_model_id": this.formGroup.value.model,
         };
-        this.authenticationService.put('product/' + this.id, data).subscribe(
+        this.authenticationService.put('unit/' + this.id, data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Producto se edito correctamente");
-                this.router.navigate(['administrator/product']);
+                this.dialogInfo("Información", "La unidad se edito correctamente");
+                this.router.navigate(['administrator/unit']);
             },
             (error) => {
                 if (error.status == 422) {
@@ -208,5 +168,4 @@ export class ProductEditComponent implements OnInit {
             this.formGroup.get(ctrl).enable();
         });
     }
-
 }

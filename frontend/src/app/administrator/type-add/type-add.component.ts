@@ -1,96 +1,65 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MatDialog} from "@angular/material";
 import {AuthService} from "../../auth/auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialog-confirm.component";
 import {DialogInfoComponent} from "../../@common/widgets/dialog-info/dialog-info.component";
+import {MatDialog} from "@angular/material";
+import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialog-confirm.component";
 import * as _ from 'lodash';
-import {Subscription} from "rxjs/internal/Subscription";
-import {ICatalog} from "../../@common/models";
 
 @Component({
-    selector: 'app-product-edit',
-    templateUrl: './product-edit.component.html',
-    styleUrls: ['./product-edit.component.css']
+    selector: 'app-type-add',
+    templateUrl: './type-add.component.html',
+    styleUrls: ['./type-add.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class TypeAddComponent implements OnInit {
     /**
      * Indicates FormGroup
      * @type {FormGroup}
      */
     public formGroup: FormGroup;
     /**
-     * Indicates subscription
-     * @type {Subscription}
-     */
-    private paramSubscription: Subscription;
-    /**
      * Indicates loading
      * @type {boolean}
      */
     public loading = false;
     /**
-     * Indicates id
-     * @type {number}
+     * Status data
      */
-    public id: number;
-    /**
-     * Result User
-     * @type {ICatalog}
-     */
-    public result: ICatalog | null;
-    /**
-     * Result User
-     * @type {ICatalog}
-     */
-    public resultModel: ICatalog | null;
+    public typeData: any[] = [
+        {id: 1, name: 'Suave'},
+        {id: 2, name: 'Dura'},
+    ];
 
-    constructor(
-        private dialog: MatDialog,
-        private router: Router,
-        private readonly route: ActivatedRoute,
-        private _formBuilder: FormBuilder,
-        private authenticationService: AuthService,
-    ) {
+    constructor(private dialog: MatDialog,
+                private router: Router,
+                private _formBuilder: FormBuilder,
+                private authenticationService: AuthService,) {
     }
 
     ngOnInit() {
-        this.paramSubscription = this.route.params.subscribe(params => {
-            this.id = params['id'];
-        });
-        this.form();
-        this.getInfo();
-        this.getModels();
-    }
-
-    public form() {
         this.formGroup = this._formBuilder.group({
-            code: [this.result ? this.result.code : null,
+            title: [null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            title: [this.result ? this.result.title : null,
+            description: [null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            description: [this.result ? this.result.description : null,
+            cicles: [null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            model: [this.result ? this.result.cat_model_id : null,
+            type: [null,
                 Validators.compose([
                     Validators.required
                 ])
             ],
         });
-    }
-
-    get code() {
-        return this.formGroup.get('code');
     }
 
     get title() {
@@ -101,8 +70,17 @@ export class ProductEditComponent implements OnInit {
         return this.formGroup.get('description');
     }
 
+    get cicles() {
+        return this.formGroup.get('cicles');
+    }
+
+
     public back() {
-        this.router.navigate(['administrator/product']);
+        this.router.navigate(['administrator/type']);
+    }
+
+    public cancel() {
+        this.formGroup.reset();
     }
 
     public dialogInfo(tit, desc) {
@@ -117,7 +95,7 @@ export class ProductEditComponent implements OnInit {
         let dialogRef = this.dialog.open(DialogConfirmComponent, {
             maxWidth: '800px',
             height: 'auto',
-            data: {title: 'Información', description: 'Estas seguro de editar el Producto'}
+            data: {title: 'Información', description: 'Estas seguro de crear un nuevo Tipo'}
         });
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -126,54 +104,22 @@ export class ProductEditComponent implements OnInit {
         });
     }
 
-    public getInfo() {
-        console.log("Info");
-        this.loading = true;
-        this.authenticationService.get('product/' + this.id, '').subscribe(
-            payload => {
-                this.loading = false;
-                this.result = payload;
-                this.form();
-            },
-            (error) => {
-                this.loading = false;
-                console.log("Error " + error);
-            }
-        );
-    }
-
-    public getModels() {
-        console.log("Models");
-        this.loading = true;
-        this.authenticationService.get('model', '').subscribe(
-            payload => {
-                this.loading = false;
-                this.resultModel = payload.data;
-                //this.form();
-            },
-            (error) => {
-                this.loading = false;
-                console.log("Error " + error);
-            }
-        );
-    }
-
     public save() {
-        console.log("Save Product");
+        console.log("Save Type");
         this.loading = true;
         this.formLock();
         let data = {
-            "code": this.formGroup.value.code,
             "title": this.formGroup.value.title,
             "description": this.formGroup.value.description,
-            "cat_model_id": this.formGroup.value.model,
+            "cicles": this.formGroup.value.cicles,
+            "type": this.formGroup.value.type,
         };
-        this.authenticationService.put('product/' + this.id, data).subscribe(
+        this.authenticationService.post('type', data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Producto se edito correctamente");
-                this.router.navigate(['administrator/product']);
+                this.dialogInfo("Información", "El Tipo se creo correctamente");
+                this.router.navigate(['administrator/type']);
             },
             (error) => {
                 if (error.status == 422) {
@@ -208,5 +154,4 @@ export class ProductEditComponent implements OnInit {
             this.formGroup.get(ctrl).enable();
         });
     }
-
 }

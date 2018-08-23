@@ -34,6 +34,28 @@ class CreateTables extends Migration
             $table->softDeletes();
         });
         /*
+        * CREATING TABLE CAT_UNITS
+        * */
+        Schema::create('cat_units', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title', 50);
+            $table->string('description', 100);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        /*
+        * CREATING TABLE CAT_TYPES
+        * */
+        Schema::create('cat_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title', 50);
+            $table->string('description', 100);
+            $table->string('cicles', 100);
+            $table->tinyInteger('type');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        /*
         * CREATING TABLE CAT_MODELS
         * */
         Schema::create('cat_models', function (Blueprint $table) {
@@ -49,6 +71,7 @@ class CreateTables extends Migration
         * */
         Schema::create('cat_products', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code', 50);
             $table->string('title', 50);
             $table->string('description', 100);
             $table->integer('cat_model_id')->unsigned();
@@ -75,8 +98,9 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->integer('cat_product_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('unit_id')->unsigned();
             $table->string('description', 250);
-            $table->integer('pieces')->unsigned();
+            $table->tinyInteger('quantity');
             $table->tinyInteger('type');
             $table->timestamps();
             $table->softDeletes();
@@ -84,6 +108,7 @@ class CreateTables extends Migration
         Schema::table('stock', function($table) {
             $table->foreign('cat_product_id')->references('id')->on('cat_products');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('unit_id')->references('id')->on('cat_units');
         });
         /*
         * CREATING TABLE PROCESS
@@ -111,11 +136,12 @@ class CreateTables extends Migration
             $table->integer('cat_machine_id')->unsigned();
             $table->integer('cat_turn_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('unit_id')->unsigned();
             $table->string('description', 250);
             $table->string('observations', 250);
-            $table->tinyInteger('pieces');
+            $table->tinyInteger('quantity');
             $table->tinyInteger('merma');
-            $table->tinyInteger('total_pieces');
+            $table->tinyInteger('total_quantity');
             $table->tinyInteger('status');
             $table->timestamps();
             $table->softDeletes();
@@ -126,6 +152,21 @@ class CreateTables extends Migration
             $table->foreign('cat_machine_id')->references('id')->on('cat_machines');
             $table->foreign('cat_turn_id')->references('id')->on('cat_turns');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('unit_id')->references('id')->on('cat_units');
+        });
+        /*
+        * CREATING TABLE EVIDENCES
+        * */
+        Schema::create('evidences', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('process_tracking_id')->unsigned();
+            $table->string('filename', 250);
+            $table->tinyInteger('type');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        Schema::table('evidences', function($table) {
+            $table->foreign('process_tracking_id')->references('id')->on('process_tracking');
         });
     }
 
@@ -139,6 +180,12 @@ class CreateTables extends Migration
         /*
          * DROP ALL FOREIGN KEYS
          * */
+        Schema::table('stock', function($table)
+        {
+            $table->dropForeign('cat_product_id');
+            $table->dropForeign('user_id');
+            $table->dropForeign('unit_id');
+        });
         Schema::table('process', function($table)
         {
             $table->dropForeign('cat_product_id');
@@ -149,6 +196,11 @@ class CreateTables extends Migration
             $table->dropForeign('cat_machine_id');
             $table->dropForeign('cat_turno_id');
             $table->dropForeign('user_id');
+            $table->dropForeign('unit_id');
+        });
+        Schema::table('evidences', function($table)
+        {
+            $table->dropForeign('process_tracking_id');
         });
         /*
          * DROP CAT_TURNS
@@ -158,6 +210,14 @@ class CreateTables extends Migration
          * DROP CAT_MACHINES
          * */
         Schema::dropIfExists('cat_machines');
+        /*
+         * DROP CAT_UNITS
+         * */
+        Schema::dropIfExists('cat_units');
+        /*
+         * DROP CAT_UNITS
+         * */
+        Schema::dropIfExists('cat_types');
         /*
          * DROP CAT_PRODCUTS
          * */
@@ -174,5 +234,9 @@ class CreateTables extends Migration
          * DROP PROCESS_TRACKING
          * */
         Schema::dropIfExists('process_tracking');
+        /*
+         * DROP EVIDENCES
+         * */
+        Schema::dropIfExists('evidences');
     }
 }

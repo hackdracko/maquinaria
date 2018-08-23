@@ -12,16 +12,16 @@ class CatModelsTableSeeder extends Seeder
     public function run()
     {
         DB::table('cat_models')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "STP22-13/CorN",
+            'description' => "STP22-13/CorN",
         ]);
         DB::table('cat_models')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "STP22-14/CorN",
+            'description' => "STP22-14/CorN",
         ]);
         DB::table('cat_models')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "STP22-15/CorN",
+            'description' => "STP22-15/CorN",
         ]);
     }
 }

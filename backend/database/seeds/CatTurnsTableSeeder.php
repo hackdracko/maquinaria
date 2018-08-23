@@ -12,16 +12,16 @@ class CatTurnsTableSeeder extends Seeder
     public function run()
     {
         DB::table('cat_turns')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Matutino",
+            'description' => "Turno de la Mañana",
         ]);
         DB::table('cat_turns')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Vespertino",
+            'description' => "Turno de la Tarde",
         ]);
         DB::table('cat_turns')->insert([
-            'title' => str_random(10),
-            'description' => str_random(10),
+            'title' => "Diurno",
+            'description' => "Turno de la Noche",
         ]);
     }
 }
