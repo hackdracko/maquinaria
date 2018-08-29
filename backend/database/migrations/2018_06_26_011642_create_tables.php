@@ -96,19 +96,21 @@ class CreateTables extends Migration
         * */
         Schema::create('stock', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cat_product_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('unit_id')->unsigned();
-            $table->string('description', 250);
+            $table->integer('type_id')->unsigned();
+            $table->string('lote', 100);
+            $table->string('delivery_person', 250);
+            $table->string('observation', 250);
             $table->tinyInteger('quantity');
             $table->tinyInteger('type');
             $table->timestamps();
             $table->softDeletes();
         });
         Schema::table('stock', function($table) {
-            $table->foreign('cat_product_id')->references('id')->on('cat_products');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('unit_id')->references('id')->on('cat_units');
+            $table->foreign('type_id')->references('id')->on('cat_types');
         });
         /*
         * CREATING TABLE PROCESS
@@ -116,6 +118,7 @@ class CreateTables extends Migration
         Schema::create('process', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('stock_id')->unsigned();
+            $table->integer('cat_product_id')->unsigned();
             $table->string('description', 250);
             $table->string('lote', 100);
             $table->string('op', 100);
@@ -125,6 +128,7 @@ class CreateTables extends Migration
         });
         Schema::table('process', function($table) {
             $table->foreign('stock_id')->references('id')->on('stock');
+            $table->foreign('cat_product_id')->references('id')->on('cat_products');
         });
         /*
         * CREATING TABLE PROCESS TRACKING
@@ -182,12 +186,13 @@ class CreateTables extends Migration
          * */
         Schema::table('stock', function($table)
         {
-            $table->dropForeign('cat_product_id');
             $table->dropForeign('user_id');
             $table->dropForeign('unit_id');
+            $table->dropForeign('type_id');
         });
         Schema::table('process', function($table)
         {
+            $table->dropForeign('stock_id');
             $table->dropForeign('cat_product_id');
         });
         Schema::table('process_tracking', function($table)

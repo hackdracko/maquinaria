@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
     {
         path: 'auth',
         //canActivate: [CanActivateAuthGuard],
-        loadChildren: '../auth/auth.module#AuthModule'
+        loadChildren: '../sign-in/sign-in.module#SignInModule'
     },
 
     {

@@ -1,0 +1,28 @@
+{
+    "total_count": 1,
+    "items": [
+        {
+            "id": 1,
+            "date": "2018-01-28 12:49",
+            "quantity": 1,
+            "product": {
+                "id": 49,
+                "picture": "/assets/img/products/iwatch.jpg",
+                "is_active": true,
+                "catalogues": [],
+                "name": "VINO TINTO 750 ML",
+                "description": "Vino Tinto Pesquera Crianza 750 ml (España) 12 botellas. Uva: Tempranillo.Maridajes:  Arroces con carne, recetas gelatinosas y frito de cordero.",
+                "cost": 8014.7,
+                "brand": "PESQUERA",
+                "shipping": 0,
+                "sku": "5058",
+                "promo": "",
+                "proveedor": "Alguna / Armando apellidos de algo",
+                "category": {
+                    "name": "Casas",
+                    "special": true
+                }
+            }
+        }
+    ]
+}

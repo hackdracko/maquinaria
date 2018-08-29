@@ -1,0 +1,47 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Agencia 1",
+            "encargado": "Jose Jose",
+            "email": "josej@lalala.com",
+            "telefono": "56575859"
+        },
+        {
+            "id": 2,
+            "name": "Agencia 2",
+            "encargado": "Juan Gabriel",
+            "email": "juang@lalala.com",
+            "telefono": "71727374"
+        },
+        {
+            "id": 3,
+            "name": "Agencia 3",
+            "encargado": "Pedro Infante",
+            "email": "pedroi@lalala.com",
+            "telefono": "59505857"
+        },
+        {
+            "id": 4,
+            "name": "Agencia 4",
+            "encargado": "Antonio Aguilar",
+            "email": "antonnioa@lalala.com",
+            "telefono": "31323334"
+        },
+        {
+            "id": 5,
+            "name": "Agencia 5",
+            "encargado": "Mario Moreno",
+            "email": "mariom@lalala.com",
+            "telefono": "91929394"
+        },
+        {
+            "id": 6,
+            "name": "Agencia 6",
+            "encargado": "Joaquin Pardave",
+            "email": "joaquinp@lalala.com",
+            "telefono": "81828384"
+        }
+    ]
+}

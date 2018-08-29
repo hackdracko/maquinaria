@@ -1,0 +1,68 @@
+:host(app-login){
+
+  & .container{
+
+    min-height: 100%;
+    color: #888888;
+    text-align: center;
+    background: fixed center url('/assets/img/login-background.jpg');
+    background-size: cover;
+
+    & .card {
+      margin: auto;
+      width: 360px;
+      height: 500px;
+      border-radius: 2px;
+      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+      background: #fff;
+      color: rgba(0,0,0,.87);
+
+      & .header {
+        height: 90px; padding: 24px; background-color: #f9f9f9; border-bottom: 1px solid #eaeaea; border-radius: 2px 2px 0 0;
+        & img { height: 100%; max-width: 90%; }
+      }
+
+      & .content {
+        height: calc( 100% - (90px + 49px) );
+        ::ng-deep {
+          & .form {
+            padding: 34px; color: #444;
+            & h4 { margin-top: 0; }
+            & p { text-align: justify; font-size: 0.8em; margin-bottom: 30px; & i { text-decoration: underline; } }
+          }
+          & .error-message, & .recovery-success{
+            padding: 34px;
+            & .message { text-align: justify; font-size: 12px; margin-bottom: 20px; & i{ text-decoration: underline; } }
+            & > .material-icons{ font-size: 4.5em; margin: auto; &.success{ color: forestgreen;  } &.fail{ color: #f20014;  } }
+          }
+          & .btnBlock { margin-bottom: 15px; width: 100%; }
+          & .formInput mat-form-field { width: 100%; }
+          & .buttons { margin-top: 24px; }
+        }
+      }
+
+    }
+
+  }
+
+  & .powered-by{
+    position: fixed;
+    z-index: 999;
+    bottom: 10px;
+    right: 10px;
+    & img { width: 120px; }
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    & .container {
+      & > div { height: 100%; width: 100%; }
+      & .card {
+        width: 100%; height: 100%; margin: 0; padding: 0; border-radius: 0; box-shadow: none;
+        & .header { margin: 0; border-radius: 0; }
+      }
+    }
+    & .powered-by{ display: none; }
+  }
+
+}

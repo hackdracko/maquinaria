@@ -1,0 +1,54 @@
+{
+    "total_count": 3,
+    "items": [
+
+        {
+            "id": 2,
+            "title": "Diageo",
+            "description": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
+            "created": "2017-12-31",
+            "status": "borrador",
+            "products_count": 1000,
+            "margen": 0
+        },
+
+        {
+            "id": 4,
+            "title": "Diageo",
+            "description": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
+            "created": "2018-02-03",
+            "products_count": 1000,
+            "status": "revision",
+            "margen": 0
+        },
+
+        {
+            "id": 4,
+            "title": "Diageo",
+            "description": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
+            "created": "2018-02-03",
+            "products_count": 1000,
+            "status": "pendiente",
+            "margen": 0
+        },
+
+        {
+            "id": 1,
+            "title": "Diageo",
+            "description": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
+            "created": "2018-01-03",
+            "products_count": 1000,
+            "status": "aprobado",
+            "margen": 0
+        },
+        {
+            "id": 3,
+            "title": "Diageo",
+            "description": "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
+            "created": "2018-02-03",
+            "products_count": 1000,
+            "status": "inactivo",
+            "margen": 0
+        }
+    ]
+}

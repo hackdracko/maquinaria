@@ -1,0 +1,29 @@
+{
+    "total_count": 3,
+    "items": [
+        {
+            "id": 3,
+            "names": "Sofia",
+            "lastnames": "Miranda",
+            "company": "Diageo",
+            "cellphone": "1234567890",
+            "rfc": ""
+        },
+        {
+            "id": 2,
+            "names": "Merida",
+            "lastnames": "Paz",
+            "company": "Ingram Micro",
+            "cellphone": "",
+            "rfc": ""
+        },
+        {
+            "id": 1,
+            "names": "Araceli",
+            "lastnames": "Molina",
+            "company": "Facebook",
+            "cellphone": "",
+            "rfc": ""
+        }
+    ]
+}

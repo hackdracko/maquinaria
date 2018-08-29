@@ -25,7 +25,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('/rol', 'RolController');
     Route::get('/product/combo', 'CatProductController@comboProducts');
     Route::resource('/product', 'CatProductController');
+    Route::get('/unit/combo', 'CatUnitController@comboUnits');
     Route::resource('/unit', 'CatUnitController');
+    Route::get('/type/combo', 'CatTypeController@comboTypes');
     Route::resource('/type', 'CatTypeController');
     Route::resource('/machine', 'CatMachineController');
     Route::resource('/process', 'CatProcessController');

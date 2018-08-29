@@ -1,0 +1,9 @@
+:host(app-sign-in-spinner){
+
+  & .wrapper {
+    width: 100%;
+    & .spinner-wrapper{ width: 50px; margin: auto; margin-bottom: 10px; }
+    & .message{ margin:auto; padding-bottom: 50px; text-align: center; font-size: 12px; }
+  }
+
+}

@@ -1,0 +1,74 @@
+<div [@routerFadeInTransition] fxFlexAlign="stretch">
+    <!-- Loading -->
+    <div class="loading" [@FadeInTransition]="formState == 'request' ? 'shown' : 'hidden'">
+        <app-sign-in-spinner [diameter]="50">Autenticando, por favor espere...</app-sign-in-spinner>
+    </div>
+    <!-- / Loading -->
+
+    <!-- Login Form -->
+    <div class="form" [@FadeInTransition]="formState == 'clear' ? 'shown' : 'hidden'">
+        <form [formGroup]="FormGroup">
+
+            <!-- Username -->
+            <div class="formInput">
+                <mat-form-field>
+                    <input matInput formControlName="email" placeholder="Cuenta de Usuario" value="admin@admin.com">
+                    <mat-error *ngIf="FormGroup.get('email').hasError('required')">
+                        Por favor, ingrese su cuenta de usuario.
+                    </mat-error>
+                    <mat-error *ngIf="FormGroup.get('email').hasError('minlength')">
+                        La cuenta debe ser de al menos 5 caracteres.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- / Username -->
+
+            <!-- Password -->
+            <div class="formInput">
+                <mat-form-field>
+                    <input matInput formControlName="password" type="password" placeholder="Contraseña" value="123456">
+                    <mat-error *ngIf="FormGroup.get('password').hasError('required')">
+                        Por favor, ingrese su contraseña.
+                    </mat-error>
+                    <mat-error *ngIf="FormGroup.get('password').hasError('minlength')">
+                        La contraseña debe ser de al menos 6 caracteres.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- / Password -->
+        </form>
+        <div class="buttons">
+            <!-- Authorize Button -->
+            <button class="btnBlock"  mat-raised-button color="primary" (click)="authorize()">
+                INGRESAR
+            </button>
+            <!-- / Authorize Button -->
+
+            <!-- Password Recovery -->
+            <button class="btnBlock" mat-button color="accent" (click)="goToAccountRecovery()">¿Olvidaste tu Contraseña?</button>
+            <!-- / Password Recovery -->
+        </div>
+    </div>
+    <!-- / Login Form -->
+
+    <!-- Error Message -->
+    <div class="error-message" [@FadeInTransition]="formState == 'fail' ? 'shown' : 'hidden'">
+        <i class="material-icons fail">report_problem</i>
+        <p class="message">
+            La cuenta de usuario y la contraseña suministrada no concuerdan.
+            <br/><br/>
+            Por favor intente nuevamente o haga clic en el botón <i>"¿Olvidaste tu contraseña?"</i> para recibir una nueva contraseña
+            vía correo electrónico.
+        </p>
+        <div class="buttons">
+            <!-- Retry -->
+            <button class="btnBlock" mat-raised-button color="primary" (click)="retry()">INTENTAR NUEVAMENTE</button>
+            <!-- / Retry -->
+
+            <!-- Password Recovery -->
+            <button class="btnBlock" mat-button color="accent" (click)="goToAccountRecovery()">¿Olvidaste tu Contraseña?</button>
+            <!-- / Password Recovery -->
+        </div>
+    </div>
+    <!-- / Error Message -->
+</div>

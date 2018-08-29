@@ -1,0 +1,25 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Agencia 1",
+            "plaza": "Acapulco"
+        },
+        {
+            "id": 2,
+            "name": "Agencia 1",
+            "plaza": "Sonora"
+        },
+        {
+            "id": 3,
+            "name": "Agencia 3",
+            "plaza": "Veracruz"
+        },
+        {
+            "id": 4,
+            "name": "Agencia 4",
+            "plaza": "Monterrey"
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Jose Jose",
+            "email": "josej@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "MKT"
+        },
+        {
+            "id": 2,
+            "name": "Juan Gabriel",
+            "email": "juang@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "MKT"
+        },
+        {
+            "id": 3,
+            "name": "Pedro Infante",
+            "email": "pedro1@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "Auditor"
+        },
+        {
+            "id": 4,
+            "name": "Antonio Aguilar",
+            "email": "antonioa@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "MKT"
+        },
+        {
+            "id": 5,
+            "name": "Mario Moreno",
+            "email": "mariom@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "Auditor"
+        },
+        {
+            "id": 6,
+            "name": "Joaquin Pardave",
+            "email": "joaquinp@lalala.com",
+            "telefono": "56575859",
+            "extension": "56575859",
+            "celular": "55 5657-5859",
+            "puesto": "MKT"
+        }
+    ]
+}

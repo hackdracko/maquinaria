@@ -19,48 +19,87 @@
     <div class="row">
         <form [formGroup]="formGroup">
             <div class="row">
-                <mat-form-field class="col-sm-12 col-md-3 col-xs-3">
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
                     <mat-placeholder>
                         <mat-icon class="align-icon">title</mat-icon>
-                        Elige un Producto
+                        ¿Quién entrega la mercancia?
                     </mat-placeholder>
-                    <mat-select formControlName="product">
-                        <mat-option *ngFor="let product of resultProduct?.products" [value]="product.id">
-                            {{product.title}} - {{product.model.title}}
+                    <input matInput formControlName="deliveryPerson">
+                    <mat-error *ngIf="formGroup.get('deliveryPerson').hasError('required')">
+                        Debes poner el nombre la la persona que entrega la mercancia.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Lote
+                    </mat-placeholder>
+                    <input matInput formControlName="lote"/>
+                    <mat-error *ngIf="formGroup.get('lote').hasError('required')">
+                        El campo Lote es obligatorio
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Cantidad
+                    </mat-placeholder>
+                    <input matInput type="number" formControlName="quantity">
+                    <mat-error *ngIf="formGroup.get('quantity').hasError('required')">
+                        El campo Cantidad es obligatorio
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Tipo de Unidad
+                    </mat-placeholder>
+                    <mat-select formControlName="unit_id">
+                        <mat-option *ngFor="let unit of resultUnit?.units" [value]="unit.id">
+                            {{unit.title}}
                         </mat-option>
                     </mat-select>
-                    <mat-error *ngIf="formGroup.get('product').hasError('required')">
-                        El campo Producto es obligatorio
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="col-sm-12 col-md-3 col-xs-3">
-                    <mat-placeholder>
-                        <mat-icon class="align-icon">title</mat-icon>
-                        Descripcion
-                    </mat-placeholder>
-                    <input matInput formControlName="description">
-                    <mat-error *ngIf="formGroup.get('description').hasError('required')">
-                        El campo Descripción es obligatorio
-                    </mat-error>
-                    <mat-error *ngIf="description.errors?.minlength">
-                        El campo Descripción debe tener minimo 3 caracteres
+                    <mat-error *ngIf="formGroup.get('unit_id').hasError('required')">
+                        El campo Tipo de Unidad es obligatorio
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="col-sm-12 col-md-3 col-xs-3">
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
                     <mat-placeholder>
                         <mat-icon class="align-icon">title</mat-icon>
-                        Número de Piezas
+                        Tipo de Madera
                     </mat-placeholder>
-                    <input matInput type="number" formControlName="pieces">
-                    <mat-error *ngIf="formGroup.get('pieces').hasError('required')">
-                        El campo Piezas es obligatorio
+                    <mat-select formControlName="type_id">
+                        <mat-option *ngFor="let type of resultType?.types" [value]="type.id">
+                            {{type.title}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.get('type_id').hasError('required')">
+                        El campo Tipo de Madera es obligatorio
                     </mat-error>
                 </mat-form-field>
 
-                <div class="col-sm-12 col-md-3 col-xs-3 text-center">
-                    <button mat-raised-button class="full-input" (click)="cancel()">Cancelar</button>
-                    <button mat-raised-button class="full-input" color="accent" [disabled]="!this.formGroup.valid"
+                <mat-form-field class="col-sm-12 col-md-6 col-xs-6">
+                    <mat-placeholder>
+                        <mat-icon class="align-icon">title</mat-icon>
+                        Observaciones
+                    </mat-placeholder>
+                    <textarea matInput formControlName="observation"></textarea>
+                    <mat-error *ngIf="formGroup.get('observation').hasError('required')">
+                        El campo Observación es obligatorio
+                    </mat-error>
+                    <mat-error *ngIf="observation.errors?.minlength">
+                        El campo Observación debe tener minimo 3 caracteres
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="col-sm-12 col-md-12 col-xs-12 text-center">
+                    <button mat-raised-button class="col-sm-12 col-md-6 col-xs-6 text-center" [disabled]="this.loading" (click)="cancel()">Cancelar</button>
+                    <button mat-raised-button class="col-sm-12 col-md-6 col-xs-6 text-center" color="accent" [disabled]="!this.formGroup.valid"
                             (click)="save()">
                         Agregar
                     </button>
@@ -77,24 +116,39 @@
                         </mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="product">
-                        <mat-header-cell *matHeaderCellDef> Producto</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.product.title}}</mat-cell>
+                    <ng-container matColumnDef="deliveryPerson">
+                        <mat-header-cell *matHeaderCellDef> Persona que Entrego</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.delivery_person}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="model">
-                        <mat-header-cell *matHeaderCellDef> Modelo</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.product.model.title}}</mat-cell>
+                    <ng-container matColumnDef="user">
+                        <mat-header-cell *matHeaderCellDef> Usuario que recibio</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.user.email}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef> Descripcón</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.description}}</mat-cell>
+                    <ng-container matColumnDef="lote">
+                        <mat-header-cell *matHeaderCellDef> Lote</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.lote}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="pieces">
-                        <mat-header-cell *matHeaderCellDef> Piezas</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.pieces}}</mat-cell>
+                    <ng-container matColumnDef="quantity">
+                        <mat-header-cell *matHeaderCellDef> Cantidad</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.quantity}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="unit">
+                        <mat-header-cell *matHeaderCellDef> Unidad</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.unit.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">
+                        <mat-header-cell *matHeaderCellDef> Tipo de Madera</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.type.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="observations">
+                        <mat-header-cell *matHeaderCellDef> Observación</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.observation}}</mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="date_add">

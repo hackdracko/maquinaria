@@ -75,7 +75,7 @@ export class TypeEditComponent implements OnInit {
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            cicles: [this.result ? this.result.cicles : null,
+            cicles: [this.result ? this.result.cicle : null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])

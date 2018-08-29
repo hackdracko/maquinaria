@@ -6,11 +6,13 @@ import {DialogInfoComponent} from "../../@common/widgets/dialog-info/dialog-info
 import {MatDialog, MatPaginator, MatTableDataSource} from "@angular/material";
 import {DialogConfirmComponent} from "../../@common/widgets/dialog-confirm/dialog-confirm.component";
 import * as _ from 'lodash';
-import {ICatalog, ICatalogProduct, IRootCatalogProduct, IStock} from "../../@common/models";
+import {ICatalog, ICatalogProduct, IRootCatalogProduct, IStock, IEntries} from "../../@common/models";
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
 import {st} from "@angular/core/src/render3";
 import {IPaginate} from "../../@common/models/IPaginate";
+import {IRootUnit} from "../../@common/models/unit/IRootUnit";
+import {IRootType} from "../../@common/models/type/IRootType";
 
 @Component({
     selector: 'app-stock-entries',
@@ -21,7 +23,7 @@ export class StockEntriesComponent implements OnInit {
     /**
      * Columns Displayed
      * */
-    displayedColumns = ['position', 'product', 'model', 'description', 'pieces', 'date_add', 'actions'];
+    displayedColumns = ['position', 'deliveryPerson', 'user', 'lote', 'quantity', 'unit', 'type', 'observations', 'date_add', 'actions'];
     /**
      * Paginator for table
      * */
@@ -29,7 +31,7 @@ export class StockEntriesComponent implements OnInit {
     /**
      * Table's datasource
      * */
-    dataSource = new MatTableDataSource<IStock>();
+    dataSource = new MatTableDataSource<IEntries>();
     /**
      * Result Length
      * */
@@ -49,15 +51,15 @@ export class StockEntriesComponent implements OnInit {
      */
     public loading = false;
     /**
-     * Result Products
-     * @type {ICatalog}
+     * Result Units
+     * @type {IRootUnit}
      */
-    public resultProduct: IRootCatalogProduct | null;
+    public resultUnit: IRootUnit | null;
     /**
-     * Result Stock
-     * @type {IStock}
+     * Result Types
+     * @type {IRootType}
      */
-    public resultStock: IStock | null;
+    public resultType: IRootType | null;
     /**
      * Create Stock Obj
      * @type {obj}
@@ -79,28 +81,48 @@ export class StockEntriesComponent implements OnInit {
 
     ngOnInit() {
         this.formGroup = this._formBuilder.group({
-            product: [null,
+            lote: [null,
                 Validators.compose([
                     Validators.required
                 ])
             ],
-            description: [null,
+            deliveryPerson: [null,
                 Validators.compose([
                     Validators.required, Validators.minLength(3)
                 ])
             ],
-            pieces: [null,
+            observation: [null,
+                Validators.compose([
+                    Validators.required, Validators.minLength(3)
+                ])
+            ],
+            quantity: [null,
+                Validators.compose([
+                    Validators.required
+                ])
+            ],
+            unit_id: [null,
+                Validators.compose([
+                    Validators.required
+                ])
+            ],
+            type_id: [null,
                 Validators.compose([
                     Validators.required
                 ])
             ],
         });
-        this.getProducts();
+        this.getUnits();
+        this.getTypes();
         this.getEntries('');
     }
 
-    get description() {
-        return this.formGroup.get('description');
+    get deliveryPerson() {
+        return this.formGroup.get('deliveryPerson');
+    }
+
+    get observation() {
+        return this.formGroup.get('observation');
     }
 
 
@@ -112,13 +134,45 @@ export class StockEntriesComponent implements OnInit {
         this.formGroup.reset();
     }
 
-    public getProducts() {
+    /*public getProducts() {
         console.log("Products");
         this.loading = true;
         this.authenticationService.get('product/combo', '').subscribe(
             payload => {
                 this.loading = false;
                 this.resultProduct = payload;
+                //this.form();
+            },
+            (error) => {
+                this.loading = false;
+                console.log("Error " + error);
+            }
+        );
+    }*/
+
+    public getUnits() {
+        console.log("Units");
+        this.loading = true;
+        this.authenticationService.get('unit/combo', '').subscribe(
+            payload => {
+                this.loading = false;
+                this.resultUnit = payload;
+                //this.form();
+            },
+            (error) => {
+                this.loading = false;
+                console.log("Error " + error);
+            }
+        );
+    }
+
+    public getTypes() {
+        console.log("Types");
+        this.loading = true;
+        this.authenticationService.get('type/combo', '').subscribe(
+            payload => {
+                this.loading = false;
+                this.resultType = payload;
                 //this.form();
             },
             (error) => {
@@ -142,7 +196,7 @@ export class StockEntriesComponent implements OnInit {
                         `?page=${this.paginator.pageIndex + 1}&search=${search}`
                     );
                 }),
-                map((data: IPaginate<IStock>) => {
+                map((data: IPaginate<IEntries>) => {
                     this.loading = false;
                     this.resultsLength = data.total;
                     this.perPage = data.per_page;
@@ -152,7 +206,7 @@ export class StockEntriesComponent implements OnInit {
                     this.loading = false;
                     return observableOf([]);
                 })
-            ).subscribe((data: IStock[]) => this.dataSource.data = data);
+            ).subscribe((data: IEntries[]) => this.dataSource.data = data);
     }
 
     public dialogInfo(tit, desc) {
@@ -176,7 +230,7 @@ export class StockEntriesComponent implements OnInit {
         });
     }
 
-    public getValueComboProductById(id){
+    /*public getValueComboProductById(id){
         let val :string;
         for(let product of this.resultProduct.products){
             if(id == product.id){
@@ -184,18 +238,19 @@ export class StockEntriesComponent implements OnInit {
             }
         }
         return val;
-    }
+    }*/
 
     public addStock(){
         console.log("Agregando");
-        let productVal = this.getValueComboProductById(this.formGroup.value.product);
+        //let productVal = this.getValueComboProductById(this.formGroup.value.product);
+        let productVal = "pendiente";
         let count = this.arrStock.length;
         this.objStock = {
             "id" : (count + 1),
             "cat_product_id" : this.formGroup.value.product,
             "productValue" : productVal,
             "description" : this.formGroup.value.description,
-            "pieces" : this.formGroup.value.pieces,
+            "quantity" : this.formGroup.value.quantity,
         };
         this.arrStock.push(this.objStock);
     }
@@ -225,17 +280,21 @@ export class StockEntriesComponent implements OnInit {
         console.log("Save Stock");
         this.loading = true;
         this.formLock();
+
         let data = {
-            "cat_product_id" : this.formGroup.value.product,
-            "description" : this.formGroup.value.description,
-            "pieces" : this.formGroup.value.pieces,
+            "delivery_person" : this.formGroup.value.deliveryPerson,
+            "lote" : this.formGroup.value.lote,
+            "observation" : this.formGroup.value.observation,
+            "quantity" : this.formGroup.value.quantity,
+            "unit_id" : this.formGroup.value.unit_id,
+            "type_id" : this.formGroup.value.type_id,
             "type" : 1
         };
         this.authenticationService.post('stock', data).subscribe(
             payload => {
                 this.loading = false;
                 this.formUnlock();
-                this.dialogInfo("Información", "El Stock se creo correctamente");
+                this.dialogInfo("Información", "La Entrada se creo correctamente");
                 this.cancel();
                 this.getEntries('');
             },

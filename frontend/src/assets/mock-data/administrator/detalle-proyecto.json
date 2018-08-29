@@ -1,0 +1,37 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Acapulco",
+            "activaciones": "10",
+            "impactos": "3500",
+            "actms": "5",
+            "numag": "2"
+        },
+        {
+            "id": 2,
+            "name": "Sonora",
+            "activaciones": "10",
+            "impactos": "3500",
+            "actms": "5",
+            "numag": "2"
+        },
+        {
+            "id": 3,
+            "name": "Cancún",
+            "activaciones": "10",
+            "impactos": "3500",
+            "actms": "5",
+            "numag": "2"
+        },
+        {
+            "id": 4,
+            "name": "Monterrey",
+            "activaciones": "10",
+            "impactos": "3500",
+            "actms": "5",
+            "numag": "2"
+        }
+    ]
+}

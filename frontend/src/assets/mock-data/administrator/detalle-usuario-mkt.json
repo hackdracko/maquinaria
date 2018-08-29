@@ -1,0 +1,47 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Coca-Cola",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        },
+        {
+            "id": 2,
+            "name": "Fanta",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        },
+        {
+            "id": 3,
+            "name": "Sprite",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        },
+        {
+            "id": 4,
+            "name": "Ciel",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        },
+        {
+            "id": 5,
+            "name": "Mundet",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        },
+        {
+            "id": 6,
+            "name": "Del Valle",
+            "status": "josej@lalala.com",
+            "fechaInicio": "56575859",
+            "fechaFin": "56575859"
+        }
+    ]
+}

@@ -26,11 +26,4 @@ class CatProduct extends Model
     {
         return $this->belongsTo('App\CatModel', 'cat_model_id');
     }
-    /**
-     * Get the Stocks for the Product.
-     */
-    public function stocks()
-    {
-        return $this->hasMany('App\Stock');
-    }
 }

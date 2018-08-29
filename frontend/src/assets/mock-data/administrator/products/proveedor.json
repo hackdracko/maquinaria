@@ -1,0 +1,491 @@
+{
+    "total_count": 45,
+    "items": [
+        {
+            "id": 49,
+            "picture": "/assets/img/products/iwatch.jpg",
+            "is_active": true,
+            "catalogues": [],
+            "name": "VINO TINTO 750 ML",
+            "description": "Vino Tinto Pesquera Crianza 750 ml (España) 12 botellas. Uva: Tempranillo.Maridajes:  Arroces con carne, recetas gelatinosas y frito de cordero.",
+            "cost": 8014.7,
+            "brand": "PESQUERA",
+            "shipping": 0,
+            "sku": "5058",
+            "promo": "",
+            "proveedor": "Alguna / Armando apellidos de algo",
+            "category": {
+                "name": "Casas",
+                "special": true
+            }
+        },
+        {
+            "id": 34,
+            "picture": "/assets/img/products/iwatch.jpg",
+            "is_active": true,
+            "catalogues": [],
+            "name": "Producto 34",
+            "description": "Descripción Producto 34",
+            "cost": 378,
+            "brand": "Marca Producto-34",
+            "shipping": 0,
+            "sku": "SKU-34",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 3",
+                "special": false
+            }
+        },
+        {
+            "id": 33,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [],
+            "name": "Producto 33",
+            "description": "Descripción Producto 33",
+            "cost": 662,
+            "brand": "Marca Producto-33",
+            "shipping": 0,
+            "sku": "SKU-33",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 3",
+                "special": false
+            }
+        },
+        {
+            "id": 32,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [],
+            "name": "Producto 32",
+            "description": "Descripción Producto 32",
+            "cost": 44,
+            "brand": "Marca Producto-32",
+            "shipping": 0,
+            "sku": "SKU-32",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 5",
+                "special": false
+            }
+        },
+        {
+            "id": 31,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [],
+            "name": "Producto 31",
+            "description": "Descripción Producto 31",
+            "cost": 221,
+            "brand": "Marca Producto-31",
+            "shipping": 0,
+            "sku": "SKU-31",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        },
+        {
+            "id": 20,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 20",
+            "description": "Descripción Producto 20",
+            "cost": 817,
+            "brand": "Marca Producto-20",
+            "shipping": 0,
+            "sku": "SKU-20",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 8",
+                "special": false
+            }
+        },
+        {
+            "id": 19,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 19",
+            "description": "Descripción Producto 19",
+            "cost": 39,
+            "brand": "Marca Producto-19",
+            "shipping": 0,
+            "sku": "SKU-19",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Hogar / Electrodomésticos",
+                "special": false
+            }
+        },
+        {
+            "id": 18,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 18",
+            "description": "Descripción Producto 18",
+            "cost": 370,
+            "brand": "Marca Producto-18",
+            "shipping": 0,
+            "sku": "SKU-18",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 3",
+                "special": false
+            }
+        },
+        {
+            "id": 17,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 17",
+            "description": "Descripción Producto 17",
+            "cost": 479,
+            "brand": "Marca Producto-17",
+            "shipping": 0,
+            "sku": "SKU-17",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 7",
+                "special": false
+            }
+        },
+        {
+            "id": 16,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 16",
+            "description": "Descripción Producto 16",
+            "cost": 177,
+            "brand": "Marca Producto-16",
+            "shipping": 0,
+            "sku": "SKU-16",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 9",
+                "special": false
+            }
+        },
+        {
+            "id": 15,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 15",
+            "description": "Descripción Producto 15",
+            "cost": 352,
+            "brand": "Marca Producto-15",
+            "shipping": 0,
+            "sku": "SKU-15",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        },
+        {
+            "id": 14,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 14",
+            "description": "Descripción Producto 14",
+            "cost": 546,
+            "brand": "Marca Producto-14",
+            "shipping": 0,
+            "sku": "SKU-14",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 5",
+                "special": false
+            }
+        },
+        {
+            "id": 13,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 13",
+            "description": "Descripción Producto 13",
+            "cost": 670,
+            "brand": "Marca Producto-13",
+            "shipping": 0,
+            "sku": "SKU-13",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Hogar",
+                "special": false
+            }
+        },
+        {
+            "id": 12,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 12",
+            "description": "Descripción Producto 12",
+            "cost": 812,
+            "brand": "Marca Producto-12",
+            "shipping": 0,
+            "sku": "SKU-12",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 9",
+                "special": false
+            }
+        },
+        {
+            "id": 11,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Producto 11",
+            "description": "Descripción Producto 11",
+            "cost": 481,
+            "brand": "Marca Producto-11",
+            "shipping": 0,
+            "sku": "SKU-11",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 7",
+                "special": false
+            }
+        },
+        {
+            "id": 45,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "NUTRIBULLET 600",
+            "description": "Fácil de limpiar\nPotencia en motor de 600 watts\nCuchillas de acero inoxidable\nContenedor de alimentos de policarbonato de 710 y 532 ml\nConsumo mínimo de corriente 5 amperios / hora",
+            "cost": 1683.22,
+            "brand": "NUTRI BULLET",
+            "shipping": 0,
+            "sku": "600",
+            "promo": "",
+            "proveedor": "Alguna / Dario apellidos de algo",
+            "category": {
+                "name": "Hogar / Electrodomésticos",
+                "special": false
+            }
+        },
+        {
+            "id": 48,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "NUTRIBULLET 600",
+            "description": "Fácil de limpiar\nPotencia en motor de 600 watts\nCuchillas de acero inoxidable\nContenedor de alimentos de policarbonato de 710 y 532 ml\nConsumo mínimo de corriente 5 amperios / hora",
+            "cost": 183.22,
+            "brand": "NUTRI BULLET",
+            "shipping": 0,
+            "sku": "600",
+            "promo": "",
+            "proveedor": "Alguna / Armando apellidos de algo",
+            "category": {
+                "name": "Casas / Electrodomésticos",
+                "special": true
+            }
+        },
+        {
+            "id": 9,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 9",
+            "description": "Modificación descripción 9",
+            "cost": 1019,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 5",
+                "special": false
+            }
+        },
+        {
+            "id": 8,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 8",
+            "description": "Modificación descripción 8",
+            "cost": 1018,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        },
+        {
+            "id": 7,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 7",
+            "description": "Modificación descripción 7",
+            "cost": 1017,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 10",
+                "special": false
+            }
+        },
+        {
+            "id": 6,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 6",
+            "description": "Modificación descripción 6",
+            "cost": 1016,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        },
+        {
+            "id": 5,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 5",
+            "description": "Modificación descripción 5",
+            "cost": 1015,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 8",
+                "special": false
+            }
+        },
+        {
+            "id": 40,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [],
+            "name": "Modificación producto 40",
+            "description": "Modificación descripción 40",
+            "cost": 1050,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        },
+        {
+            "id": 4,
+            "picture": "/assets/img/products/iphone-x.jpg",
+            "is_active": true,
+            "catalogues": [
+                "Catálogo 3 / CLIEN-4"
+            ],
+            "name": "Modificación producto 4",
+            "description": "Modificación descripción 4",
+            "cost": 1014,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 2 PROV 2",
+            "category": {
+                "name": "Categoría 3",
+                "special": false
+            }
+        },
+        {
+            "id": 39,
+            "picture": null,
+            "is_active": true,
+            "catalogues": [],
+            "name": "Modificación producto 39",
+            "description": "Modificación descripción 39",
+            "cost": 1049,
+            "brand": "M-Marca Producto-",
+            "shipping": 0,
+            "sku": "M-SKU-",
+            "promo": null,
+            "proveedor": " / Proveedor 3 PROV 3",
+            "category": {
+                "name": "Categoría 6",
+                "special": false
+            }
+        }
+    ]
+}

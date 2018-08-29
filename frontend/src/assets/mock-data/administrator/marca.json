@@ -1,0 +1,25 @@
+{
+    "total_count": 100,
+    "items": [
+        {
+            "id": 1,
+            "name": "Coca-Cola",
+            "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut ipsum quam. Etiam et semper dolor. "
+        },
+        {
+            "id": 2,
+            "name": "Ciel",
+            "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut ipsum quam. Etiam et semper dolor. "
+        },
+        {
+            "id": 3,
+            "name": "Fanta",
+            "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut ipsum quam. Etiam et semper dolor. "
+        },
+        {
+            "id": 4,
+            "name": "Sprite",
+            "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut ipsum quam. Etiam et semper dolor. "
+        }
+    ]
+}

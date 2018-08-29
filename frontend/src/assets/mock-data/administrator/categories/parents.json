@@ -1,0 +1,17 @@
+[
+    {
+        "viewValue": "Casas",
+        "value": 1,
+        "special": 0
+    },
+    {
+        "viewValue": "Electrodomésticos",
+        "value": "2",
+        "special": 0
+    },
+    {
+        "viewValue": "Categoría Especial 3",
+        "value": "3",
+        "special": 0
+    }
+]

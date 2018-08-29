@@ -1,0 +1,87 @@
+<div [@routerFadeInTransition]>
+    <!-- Loading -->
+    <div class="loading" [@FadeInTransition]="formState == 'request' ? 'shown' : 'hidden'">
+        <app-sign-in-spinner [diameter]="50">Procesando solicitud, por favor espere...</app-sign-in-spinner>
+    </div>
+    <!-- / Loading -->
+
+    <!-- Password Recovery Form -->
+    <div class="form" [@FadeInTransition]="formState == 'clear' ? 'shown' : 'hidden'">
+        <h4>RECUPERAR CONTRASEÑA</h4>
+        <p>
+            A continuaci&oacute;n, ingresa tu <i matTooltip="La Cuenta de Usuario con la cual fuiste dado de alta en la plataforma">Cuenta de Usuario</i> y en breve ser&aacute;
+            enviada una nueva contraseña a tu buz&oacute;n de <i matTooltip="Dirección de Correo Electrónico asociada a la cuenta de usuario">Correo Electr&oacute;nico</i> registrado.
+        </p>
+        <form [formGroup]="FormGroup" class="form-horizontal">
+            <!-- Username -->
+            <div class="formInput">
+                <mat-form-field>
+                    <input matInput formControlName="username" placeholder="Cuenta de Usuario">
+                    <mat-error *ngIf="FormGroup.get('username').hasError('required')">
+                        Por favor, ingrese su cuenta de usuario.
+                    </mat-error>
+                    <mat-error *ngIf="FormGroup.get('username').hasError('minlength')">
+                        La cuenta debe ser de al menos 5 caracteres.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- / Username -->
+        </form>
+        <div class="buttons">
+            <!-- Authorize Button -->
+            <button class="btnBlock"  mat-raised-button color="primary" (click)="requestRecovery()">
+                RECUPERAR CONTRASEÑA
+            </button>
+            <!-- / Authorize Button -->
+
+            <!-- Login -->
+            <button class="btnBlock" mat-button color="primary" (click)="goToLogin()">
+                <i class="material-icons">arrow_back</i> Regresar al Inicio
+            </button>
+            <!-- / Login -->
+        </div>
+    </div>
+    <!-- / Password Recovery Form -->
+
+    <!-- Error Message -->
+    <div class="error-message" [@FadeInTransition]="formState == 'fail' ? 'shown' : 'hidden'">
+        <i class="material-icons fail">report_problem</i>
+        <p class="message">
+            Disculpe, pero la <i>Cuenta de Usuario</i> indicada no se encuentra registrada.
+            <br/><br/>
+            Por favor, verifique los datos solicitados e intente nuevamente.
+        </p>
+        <div class="buttons">
+            <!-- Retry -->
+            <button class="btnBlock"  mat-raised-button color="primary" (click)="retry()">
+                INTENTAR NUEVAMENTE
+            </button>
+            <!-- / Retry -->
+
+            <!-- Go Back to Login -->
+            <button class="btnBlock" mat-button color="primary" (click)="goToLogin()">
+                <i class="material-icons">arrow_back</i> Regresar al Inicio
+            </button>
+            <!-- / Go Back to Login -->
+        </div>
+    </div>
+    <!-- / Error Message -->
+
+    <!-- Recovery Success -->
+    <div class="recovery-success" [@FadeInTransition]="formState == 'success' ? 'shown' : 'hidden'">
+        <i class="material-icons success">verified_user</i>
+        <p class="message">
+            Su solicitud fue procesada con &eacute;xito. En breve recibir&aacute; una nueva contraseña temporal con la cual podr&aacute; iniciar sesi&oacute;n.
+            <br/><br/>
+            <!-- <span class="note">Una vez que inicie sesi&oacute;n, por favor no olvide cambiar la contraseña temporal.</span> -->
+        </p>
+        <div class="buttons">
+            <!-- Go Back to Login -->
+            <button class="btnBlock" mat-raised-button color="primary" (click)="goToLogin()">
+                <i class="material-icons">arrow_back</i> Regresar al Inicio
+            </button>
+            <!-- / Go Back to Login -->
+        </div>
+    </div>
+    <!-- / Recovery Success -->
+</div>
