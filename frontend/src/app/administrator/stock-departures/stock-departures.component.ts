@@ -21,7 +21,7 @@ export class StockDeparturesComponent implements OnInit {
     /**
      * Columns Displayed
      * */
-    displayedColumns = ['position', 'product', 'model', 'description', 'pieces', 'date_add', 'actions'];
+    displayedColumns = ['position', 'deliveryPerson', 'user', 'lote', 'quantity', 'unit', 'type', 'observations', 'date_add', 'actions'];
     /**
      * Paginator for table
      * */
@@ -52,7 +52,7 @@ export class StockDeparturesComponent implements OnInit {
      * Result Products
      * @type {ICatalog}
      */
-    public resultProduct: IRootCatalogProduct | null;
+    public resultProduct: any;
     /**
      * Result Stock
      * @type {IStock}

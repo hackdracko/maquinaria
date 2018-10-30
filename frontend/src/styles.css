@@ -1,14 +1,201 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html, body{
     height: 100%;
 }
-body{
 
+body{
     padding: 0; margin: 0;
     background: #f9f9f9;
-    font-family: Arial, Verdana, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
+}
+
+.bienvenido{
+    font-family: "Ailerons" !important;
+    font-size: 40px;
+    color: #00B2D9;
+    letter-spacing: -5px;
+    margin: 5px 0px 30px 0px;
+}
+
+.mat-form-field-underline {
+    background-color: rgba(255, 0, 0, 0.4) !important;
+}
+
+mat-toolbar.mat-toolbar.sidenav-toolbar{
+    background: #00B2D9 !important;
+    padding: 0 14px 0 24px;
+    z-index: 3;
+    min-height: 64px;
+    max-height: 64px;
+}
+
+.main-toolbar {
+    background-color:#d32f2f !important;
+    padding-right: 0;
+    height: 64px;
+    padding-left: 16px;
 
 }
 
+.mat-drawer-container {
+    color: rgba(101, 101, 101, 0.9) !important;
+}
+
+.sidenav-container .sidenav-scrollbar-container{
+    background-color: #e5e9e7 !important;
+}
+
+.sidenav-toplevel > .sidenav-item > .sidenav-anchor.active {
+    background: #b9b9b9 !important;
+}
+
+.sidenav-toplevel .sidenav-anchor:hover
+{
+    background-color: #8a8a8a !important;
+}
+
+.sidenav + .cdk-visually-hidden + .mat-drawer-content, .sidenav + .mat-drawer-content {
+
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-property: all;
+    transition-property: transform, max-width, margin-left, margin-right !important;
+    margin-left: 0 !important;
+    background: #EEE;
+    background-image: none;
+    z-index: 5;
+    overflow: hidden;
+    box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4);
+    background-image: url('/assets/img/bg.png') !important;
+    background-color: #fcfcfc !important;
+
+}
+.mat-card-title {
+    display: block;
+    margin-bottom: 10px !important;
+}
+
+p{
+    font-size: 1rem;
+}
+
+h1, h2, h3{
+    color:#00B2D9 !important;
+}
+
+.breadcumbs{
+    color: #00B2D9 !important;
+    font-size:.8rem;
+}
+
+
+.center-btn{
+    text-align: center !important;
+}
+
+p{
+    color: #000;
+    font-size:1rem;
+}
+
+.spacer{
+    margin: 10px 1.1% 10px;
+}
+
+.spacer2{
+    margin: 20px 0px;
+}
+
+
+
+.std-btn{
+    background-color:gray;
+    color:white !important;
+    letter-spacing: .1rem;
+}
+
+.name{
+    color:white !important;
+}
+
+.mat-ripple {
+    overflow: hidden;
+    color: gray;
+}
+
+.icon{
+    color:white;
+}
+
+.icon-sidenav-toggle{
+    color:white !important;
+}
+
+
+.titulos-secciones{
+    color:#00B2D9 !important;
+    font-family: "Ailerons" !important;
+    font-size: 40px;
+    letter-spacing: -5px;
+}
+
+.full-input {
+    width: 100%;
+}
+
+.btn-center{
+    text-align: center !important;
+}
+.shadow{
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+}
+
+.bg-white {
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+    background: #fff;
+    padding: 5px 20px 0;
+}
+
+p{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color:gray;
+}
+
+.blue{
+    color:#00B2D9 !important;
+    font-size: 16px;
+}
+
+.std-btn2{
+    background-color:gray;
+    color:white !important;
+    width: 100% !important;
+}
+
+.std-btn3{
+    background-color:gray;
+    color:white !important;
+}
+
+.std-btn4{
+    background-color:#00B2D9 !important;
+    color:white !important;
+    width: 100% !important;
+}
+
+.blue-btn{
+    background-color:#00B2D9 !important;
+    color:white !important;
+}
+
+.borrador-btn{
+    background-color:#ffae00 !important;
+    color:white !important;
+}
+
+.green-btn{
+    background-color:green !important;
+    color:white !important;
+}

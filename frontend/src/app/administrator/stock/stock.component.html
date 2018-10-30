@@ -1,20 +1,28 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-xs-6">
+        <div class="col-sm-12 col-md-12 col-xs-12">
             <h2 class="page-title">
                 <mat-icon>event_note</mat-icon>
                 Administración Inventario
             </h2>
         </div>
-        <div class="col-sm-12 col-md-6 col-xs-6 text-right">
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-xs-3 text-center">
             <button mat-raised-button color="accent" (click)="entries()">
                 <mat-icon>add_circle</mat-icon>&nbsp;
                 <span>Agregar Entrada</span>
             </button>
         </div>
-        <div class="col-sm-12 col-md-6 col-xs-6 text-right">
-            <button mat-raised-button color="accent" (click)="departures()">
+        <div class="col-sm-12 col-md-3 col-xs-3 text-center">
+            <button mat-raised-button color="primary" (click)="entries()">
                 <mat-icon>add_circle</mat-icon>&nbsp;
+                <span>Crear Orden</span>
+            </button>
+        </div>
+        <div class="col-sm-12 col-md-3 col-xs-3 text-center">
+            <button mat-raised-button color="warn" (click)="departures()">
+                <mat-icon>remove_circle</mat-icon>&nbsp;
                 <span>Agregar Salida</span>
             </button>
         </div>

@@ -70,10 +70,10 @@ export class LoginComponent implements OnInit {
             data => {
                 this.formUnlock();
                 this.formIsSending = false;
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user_id', data.data.id);
-                localStorage.setItem('username', data.data.username);
-                localStorage.setItem('user_role', data.data.role);
+                sessionStorage.setItem('token', data.token);
+                sessionStorage.setItem('user_id', data.data.id);
+                sessionStorage.setItem('username', data.data.username);
+                sessionStorage.setItem('user_role', data.data.role);
                 this.router.navigate(['/administrator']);
             },
             (error) => {

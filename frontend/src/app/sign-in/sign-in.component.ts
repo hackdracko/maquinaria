@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
      * Revoke credentials
      */
     public ngOnInit() {
-        this.title.setTitle( 'TEST' );
+        this.title.setTitle( 'Gualas Clousures' );
     }
 
 }

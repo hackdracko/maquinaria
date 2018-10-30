@@ -18,23 +18,7 @@ export class AuthService {
                 private router: Router,
                 @Inject(APP_CONFIG) private config: AppConfig) {
         // set token if saved in local storage
-        this.token = localStorage.getItem('token');
         this.url = `${this.config.apiEndpoint}`;
-        this.httpOptionsAuth = {
-            headers: new HttpHeaders({
-                'Accept': 'application/json',
-                'Content-Type':  'application/json',
-                'Cache-control': 'no-cache',
-            })
-        };
-        this.httpOptions = {
-            headers: new HttpHeaders({
-                'Accept': 'application/json',
-                'Content-Type':  'application/json',
-                'Cache-control': 'no-cache',
-                'Authorization': 'Bearer ' + this.token,
-            })
-        };
         /*this.headers = new HttpHeaders();
         this.headers.set('Accept', 'application/json');
         this.headers.set('Content-Type', 'application/json');
@@ -47,43 +31,51 @@ export class AuthService {
     }
 
     login(params: any): Observable<any> {
+        this.httpOptionsAuth = {
+            headers: new HttpHeaders({
+                'Accept': 'application/json',
+                'Content-Type':  'application/json',
+                'Cache-control': 'no-cache',
+            })
+        };
         return this.http.post(this.url + 'authorize', params, this.httpOptionsAuth);
-
-        //return this.http.post(this.url + 'authorize', params, {headers: this.headers})
-            /*.map(result => {
-                // login successful if there's a jwt token in the response
-                let token = result && result['token'];
-                if (token) {
-                    // set token property
-                    localStorage.setItem('token', token);
-                    //this.cookieService.set( 'token', token );
-                    return true;
-                } else {
-                    // return false to indicate failed login
-                    return false;
-                }
-            });*/
     }
 
     logout(){
-        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigate(['/']);
     }
 
     get(url: string, params: string): Observable<any> {
+        this.headerBearer();
         return this.http.get(this.url + url + params, this.httpOptions);
     }
 
     post(url: string, params?: {}): Observable<any> {
+        this.headerBearer();
         return this.http.post(this.url + url, params, this.httpOptions);
     }
 
     put(url: string, params?: {}): Observable<any> {
+        this.headerBearer();
         return this.http.put(this.url + url, params, this.httpOptions);
     }
 
     delete(url: string): Observable<any> {
+        this.headerBearer();
         return this.http.delete(this.url + url, this.httpOptions);
+    }
+
+    public headerBearer(){
+        this.token = sessionStorage.getItem('token');
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Accept': 'application/json',
+                'Content-Type':  'application/json',
+                'Cache-control': 'no-cache',
+                'Authorization': 'Bearer ' + this.token,
+            })
+        };
     }
 
     private handleError(error: HttpErrorResponse) {

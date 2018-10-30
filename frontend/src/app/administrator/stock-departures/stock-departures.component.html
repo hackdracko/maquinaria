@@ -25,9 +25,8 @@
                         Elige un Producto
                     </mat-placeholder>
                     <mat-select formControlName="product">
-                        <mat-option *ngFor="let product of resultProduct?.products" [value]="product.id">
-                            <b class="alert-success">Producto:</b> {{product.title}}
-                            <b class="alert-info">Modelo:</b> {{product.model.title}}
+                        <mat-option *ngFor="let product of resultProduct" [value]="product.id">
+                            <b class="alert-success">Tipo de Madera:</b> {{product.title}}
                             <b class="alert-warning">Inventario Total:</b> {{product.total}}
                         </mat-option>
                     </mat-select>
@@ -79,24 +78,39 @@
                         </mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="product">
-                        <mat-header-cell *matHeaderCellDef> Producto</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.product.title}}</mat-cell>
+                    <ng-container matColumnDef="deliveryPerson">
+                        <mat-header-cell *matHeaderCellDef> Persona que Entrego</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.delivery_person}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="model">
-                        <mat-header-cell *matHeaderCellDef> Modelo</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.product.model.title}}</mat-cell>
+                    <ng-container matColumnDef="user">
+                        <mat-header-cell *matHeaderCellDef> Usuario que recibio</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.user.email}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef> Descripcón</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.description}}</mat-cell>
+                    <ng-container matColumnDef="lote">
+                        <mat-header-cell *matHeaderCellDef> Lote</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.lote}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="pieces">
-                        <mat-header-cell *matHeaderCellDef> Piezas</mat-header-cell>
-                        <mat-cell *matCellDef="let data"> {{data?.pieces}}</mat-cell>
+                    <ng-container matColumnDef="quantity">
+                        <mat-header-cell *matHeaderCellDef> Cantidad</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.quantity}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="unit">
+                        <mat-header-cell *matHeaderCellDef> Unidad</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.unit.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="type">
+                        <mat-header-cell *matHeaderCellDef> Tipo de Madera</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.type.title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="observations">
+                        <mat-header-cell *matHeaderCellDef> Observación</mat-header-cell>
+                        <mat-cell *matCellDef="let data"> {{data?.observation}}</mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="date_add">

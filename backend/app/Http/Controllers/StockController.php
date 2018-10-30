@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Stock;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
@@ -113,7 +114,28 @@ class StockController extends Controller
     public function entries()
     {
         $stocks = Stock::with('user', 'unit', 'type')
-            ->where(['type' => 1])->paginate(10);
+            ->where(['type' => 1])
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         return response()->json($stocks);
+    }
+    public function departures()
+    {
+        $stocks = Stock::with('user', 'unit', 'type')
+            ->where(['type' => 2])
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+        return response()->json($stocks);
+    }
+    public function comboDepartures()
+    {
+        $stock = DB::select("SELECT t.id,
+                  t.title,
+                  SUM(s.quantity) AS total 
+                    FROM stock s
+                    INNER JOIN cat_types t ON s.type_id = t.id
+                  WHERE s.type = 1
+                  GROUP BY s.type_id;");
+        return response()->json($stock);
     }
 }

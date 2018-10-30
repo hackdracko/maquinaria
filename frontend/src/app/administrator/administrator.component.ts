@@ -28,11 +28,10 @@ export class AdministratorComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.username = localStorage.getItem('username');
+        this.username = sessionStorage.getItem('username');
     }
 
     public logout(){
-        console.log("Logout");
         this.authenticationService.logout();
     }
 

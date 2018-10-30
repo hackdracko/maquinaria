@@ -69,14 +69,15 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(data).subscribe(
             data => {
                 this.formUnlock();
-
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user_id', data.data.id);
-                localStorage.setItem('username', data.data.username);
-                localStorage.setItem('user_role', data.data.role);
+                console.log(data.token);
+                sessionStorage.setItem('token', data.token);
+                sessionStorage.setItem('user_id', data.data.id);
+                sessionStorage.setItem('username', data.data.username);
+                sessionStorage.setItem('user_role', data.data.role);
                 this.router.navigate(['/administrator']);
             },
             (error) => {
+                console.log("Error "+ error);
                 this.formUnlock();
                 //this.formIsSending = false;
                 //this.passwordInvalid = true;
@@ -94,7 +95,7 @@ export class LoginComponent implements OnInit {
                     this.formUnlock();
                     this.state.set('account', payload.account);
 
-                    localStorage.setItem('LocalStorage', 'EUREKA!!!');
+                    sessionStorage.setItem('LocalStorage', 'EUREKA!!!');
 
                     const rolesUri = this.settings.get('rolesUri');
                     if ( rolesUri && rolesUri[payload.account.role] ) {

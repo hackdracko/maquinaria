@@ -4,7 +4,36 @@
             <button mat-icon-button (click)="snav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
-            <h1>Sistema de Inventarios</h1>
+            <span>Sistema GC</span>
+            <span class="toolbar-spacer"></span>
+            <mat-divider></mat-divider>
+            <button mat-button [matMenuTriggerFor]="menuNotification">
+                <mat-icon>notifications_active</mat-icon>
+                Notificaciones
+            </button>
+            <mat-menu #menuNotification="matMenu">
+                <button mat-menu-item>
+                    Notificacion 1
+                </button>
+                <button mat-menu-item>
+                    Notificacion 2
+                </button>
+                <button mat-menu-item>
+                    Notificacion 3
+                </button>
+            </mat-menu>
+            <mat-divider></mat-divider>
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+                {{username}}
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>forward</mat-icon>
+                    Salir
+                </button>
+            </mat-menu>
         </mat-toolbar-row>
     </mat-toolbar>
 
@@ -12,53 +41,50 @@
                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="background-color: #ededed" [opened]="true">
-            <mat-nav-list>
+            <mat-nav-list style="width: 200px">
                 <a mat-list-item [routerLink]="'/administrator'">
-                    Aqui va la  el Logo
+                    <mat-icon>home</mat-icon>
+                    <span>Sistema GC</span>
                 </a>
                 <a mat-list-item [routerLink]="'user'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>person</mat-icon>
                     Usuarios
                 </a>
                 <a mat-list-item [routerLink]="'rol'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>person_outline</mat-icon>
                     Roles
                 </a>
                 <a mat-list-item [routerLink]="'model'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>gesture</mat-icon>
                     Tipos de Modelos
                 </a>
                 <a mat-list-item [routerLink]="'product'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>perm_media</mat-icon>
                     Productos
                 </a>
                 <a mat-list-item [routerLink]="'unit'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>fitness_center</mat-icon>
                     Unidades
                 </a>
                 <a mat-list-item [routerLink]="'machine'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>computer</mat-icon>
                     Maquinas
                 </a>
                 <a mat-list-item [routerLink]="'type'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>style</mat-icon>
                     Tipos de Madera
                 </a>
                 <a mat-list-item [routerLink]="'process'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>bookmark</mat-icon>
                     Procesos
                 </a>
                 <a mat-list-item [routerLink]="'turn'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>timer</mat-icon>
                     Turnos
                 </a>
                 <a mat-list-item [routerLink]="'stock'">
-                    <mat-icon>event_note</mat-icon>
+                    <mat-icon>assessment</mat-icon>
                     Inventario
-                </a>
-                <a mat-list-item (click)="logout()">
-                    <mat-icon>event_note</mat-icon>
-                    Salir
                 </a>
             </mat-nav-list>
         </mat-sidenav>
