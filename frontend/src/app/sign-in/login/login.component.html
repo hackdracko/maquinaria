@@ -12,7 +12,7 @@
             <!-- Username -->
             <div class="formInput">
                 <mat-form-field>
-                    <input matInput formControlName="email" placeholder="Cuenta de Usuario" value="admin@admin.com">
+                    <input matInput formControlName="email" placeholder="Cuenta de Usuario">
                     <mat-error *ngIf="FormGroup.get('email').hasError('required')">
                         Por favor, ingrese su cuenta de usuario.
                     </mat-error>
@@ -26,7 +26,7 @@
             <!-- Password -->
             <div class="formInput">
                 <mat-form-field>
-                    <input matInput formControlName="password" type="password" placeholder="Contraseña" value="123456">
+                    <input matInput formControlName="password" type="password" placeholder="Contraseña">
                     <mat-error *ngIf="FormGroup.get('password').hasError('required')">
                         Por favor, ingrese su contraseña.
                     </mat-error>
